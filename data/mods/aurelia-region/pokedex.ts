@@ -55,3 +55,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Blaze", H: "Flameburst"},
 		weightkg: 210.0, // Adjust weight as needed
 	},
+
+	gnomska: {
+		num: 10007,
+		name: "Gnomska",
+		types: ["Ground", "Fairy"],
+		baseStats: {hp: 75, atk: 85, def: 95, spa: 75, spd: 85, spe: 60}, // Total: 475
+		abilities: {0: "Gunk Return"}, // Only has this single ability
+		weightkg: 3.5, // Lightweight, matching a garden gnome!
+	},
