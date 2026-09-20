@@ -60,3 +60,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4,
 		num: -10003,
 	},
+
+	prismalights: {
+		name: "Prisma-Lights",
+		shortDesc: "Sets up a Rainbow on the user's side for 4 turns upon switch-in.",
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Prisma-Lights');
+			pokemon.side.addSideCondition('rainbow');
+			// Overwrite default 4-turn duration for the pledge effect combo
+			const rainbowCondition = pokemon.side.sideConditions['rainbow'];
+			if (rainbowCondition) {
+				rainbowCondition.duration = 4;
+			}
+		},
+		rating: 4.5,
+		num: -10004,
+	},
