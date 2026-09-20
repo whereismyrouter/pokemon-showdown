@@ -2,6 +2,7 @@
 		learnset: {
 			// --- Your Specific Move Requests ---
 			playrough: ["9M"],
+			detect: ["9L1"],
 			wildcharge: ["9M"],
 			bulkup: ["9M"],
 			facade: ["9M"],
@@ -73,6 +74,7 @@
 			superfang: ["9M"],
 			ironhead: ["9M"],
 			direclaw: ["9M"],
+			protect: ["9M"],
 			facade: ["9M"],
 			protect: ["9M"],
 			substitute: ["9M"],
@@ -93,6 +95,7 @@
 			ironhead: ["9M"],
 			swordsdance: ["9M"],
 			featherdance: ["9M"],
+			detect: ["9L1"],
 			foulplay: ["9M"],
 			playrough: ["9M"],
 			poisonjab: ["9M"],
@@ -130,6 +133,7 @@
 			hydrocannon: ["9M"],
 			flamethrower: ["9M"],
 			flareblitz: ["9M"],
+			protect: ["9M"],
 			flamecharge: ["9M"],
 			pyroball: ["9M"],
 			weatherball: ["9M"],
@@ -162,6 +166,7 @@
 
 			// --- Your Specific Move Requests ---
 			energyball: ["9M"],
+			protect: ["9M"],
 			gigadrain: ["9M"],
 			megadrain: ["9L1"],
 			absorb: ["9L1"],
@@ -192,6 +197,38 @@
 			rockpolish: ["9M"],
 			stoneedge: ["9M"],
 			powergem: ["9M"],
+		},
+	},
+			
+	pyrostoke: {
+		learnset: {
+			// --- Signature Move ---
+			fireclaw: ["9L1"],
+
+			// --- Your Specific Move Requests ---
+			breakingswipe: ["9M"],
+			outrage: ["9M"],
+			hornleech: ["9M"],
+			woodhammer: ["9M"],
+			earthquake: ["9M"],
+			gravapple: ["9M"],
+			burningjealousy: ["9M"],
+			playrough: ["9M"],
+			headlongrush: ["9M"],
+			roar: ["9M"],
+			hypervoice: ["9M"],
+			dig: ["9M"],
+			rockslide: ["9M"],
+			bulkup: ["9M"],
+			ironhead: ["9M"],
+			flamethrower: ["9M"],
+			flareblitz: ["9M"],
+			firepunch: ["9M"],
+			stompingtantrum: ["9M"],
+			willowisp: ["9M"],
+			snarl: ["9M"],
+			detect: ["9L1"],
+			curse: ["9M"],
 		},
 	},
 			
