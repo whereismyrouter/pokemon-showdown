@@ -64,3 +64,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Gunk Return"}, // Only has this single ability
 		weightkg: 3.5, // Lightweight, matching a garden gnome!
 	},
+
+	jokergeist: {
+		num: 10009,
+		name: "Jokergeist",
+		types: ["Dark", "Psychic"],
+		baseStats: {hp: 65, atk: 77, def: 33, spa: 77, spd: 105, spe: 120}, // Total: 477
+		abilities: {0: "Lawless Spin"}, // Uniquely has this single ability
+		weightkg: 45.0, // Adjust weight as needed for a ghostly croupier
+	},
