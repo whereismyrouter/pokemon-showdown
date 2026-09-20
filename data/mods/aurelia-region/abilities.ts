@@ -108,3 +108,41 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4.5,
 		num: -10006,
 	},
+
+	gunkreturn: {
+		name: "Gunk Return",
+		shortDesc: "Upon switch-in, moves all entry hazards from the user's side to the opposing side.",
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Gunk Return');
+			const normalSide = pokemon.side;
+			const targetSide = pokemon.side.foe;
+			const hazards = ['stealthrock', 'spikes', 'toxicspikes', 'stickyweb'];
+
+			let hazardMoved = false;
+
+			for (const hazard of hazards) {
+				if (normalSide.sideConditions[hazard]) {
+					hazardMoved = true;
+					// Get the number of layers currently on your side (useful for Spikes/Toxic Spikes)
+					const layers = normalSide.sideConditions[hazard].layers || 1;
+					
+					// Clear from your side
+					normalSide.removeSideCondition(hazard);
+					this.add('-sideend', normalSide, this.dex.conditions.get(hazard).name, '[from] ability: Gunk Return', '[of] ' + pokemon);
+
+					// Set onto the opposing side matching the exact layer count
+					for (let i = 0; i < layers; i++) {
+						// Magic Bounce style safety check: stops hazards from bouncing endlessly if both fields have a bouncing mechanics
+						targetSide.addSideCondition(hazard, pokemon);
+					}
+				}
+			}
+
+			if (hazardMoved) {
+				this.add('-message', `${pokemon.name} threw all entry hazards right back at the opponent!`);
+			}
+		},
+		rating: 5,
+		num: -10007,
+	},
+			
