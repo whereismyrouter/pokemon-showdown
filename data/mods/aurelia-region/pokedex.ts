@@ -17,5 +17,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Normal", "Fighting"],
 		baseStats: {hp: 61, atk: 90, def: 70, spa: 10, spd: 70, spe: 110},
 		abilities: {0: "Guts", 1: "Merciless", H: "Double Whip"},
-		weightkg: 35.0,
+		weightkg: 22.0,
+	},
+
+	peregrimm: {
+		num: 10003,
+		name: "Peregrimm",
+		types: ["Dark", "Flying"],
+		baseStats: {hp: 59, atk: 120, def: 75, spa: 40, spd: 40, spe: 140}, // Total: 474
+		abilities: {0: "Unburden", 1: "Keen Eye", H: "Shadow Impact"},
+		weightkg: 40.0, // Adjust weight as needed
 	},
