@@ -188,3 +188,25 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4.5,
 		num: -10009,
 	},
+
+	neverendingwinter: {
+		name: "Neverending Winter",
+		shortDesc: "On switch-in, summons Primal Snow, an absolute blizzard that overcharges the field.",
+		onStart(pokemon) {
+			this.field.setWeather('primalsnow');
+		},
+		onAnySetWeather(target, source, weather) {
+			// Primal weather trait: Cannot be overridden by standard weather (Rain, Sun, Sand, Snow)
+			const strongWeathers = ['primalsnow', 'desolateland', 'primordialsea', 'deltastream'];
+			if (this.field.weather && strongWeathers.includes(this.field.weather) && !strongWeathers.includes(weather.id)) {
+				return false;
+			}
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'primalsnow') {
+				this.field.clearWeather();
+			}
+		},
+		rating: 5,
+		num: -10010,
+	},
