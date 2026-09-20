@@ -92,3 +92,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4.5,
 		num: -10005,
 	},
+
+	flameburst: {
+		name: "Flameburst",
+		shortDesc: "Sets up a Sea of Fire on the foe's side for 4 turns upon switch-in.",
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Flameburst');
+			pokemon.side.foe.addSideCondition('firepledge');
+			// Overwrite default 4-turn duration for the pledge effect combo
+			const seaOfFireCondition = pokemon.side.foe.sideConditions['firepledge'];
+			if (seaOfFireCondition) {
+				seaOfFireCondition.duration = 4;
+			}
+		},
+		rating: 4.5,
+		num: -10006,
+	},
