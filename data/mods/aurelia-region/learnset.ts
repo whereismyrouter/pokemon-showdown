@@ -276,6 +276,10 @@
 			saltcure: ["9M"], // Elite chip damage tool!
 			toxic: ["9M"],
 			stoneedge: ["9M"],
+			dazzlinggleam: ["9M"],
+			taunt: ["9M"],
+			stompingtantrum: ["9M"],
+				
 				
 		},
 	},
