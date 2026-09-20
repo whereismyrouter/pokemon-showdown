@@ -154,3 +154,44 @@
 		target: "normal",
 		type: "Steel",
 	},
+
+	icebergcrash: {
+		num: -2008,
+		accuracy: 100,
+		basePower: 130,
+		category: "Physical",
+		name: "Iceberg Crash",
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1}, // Has the contact flag
+		recoil:, // Deals 33% recoil damage based on damage dealt
+		onTryHit(target, source, move) {
+			// Check if the target's side has active screens
+			const targetSide = target.side;
+			const screens = ['reflect', 'lightscreen', 'auroraveil'];
+			let screenDestroyed = false;
+
+			for (const screen of screens) {
+				if (targetSide.sideConditions[screen]) {
+					targetSide.removeSideCondition(screen);
+					this.add('-sideend', targetSide, this.dex.conditions.get(screen).name, '[from] move: Iceberg Crash', '[of] ' + source);
+					screenDestroyed = true;
+				}
+			}
+
+			// If any screens were destroyed, apply the +30% damage boost flag
+			if (screenDestroyed) {
+				this.add('-message', `Iceberg Crash shattered the barriers and grew stronger!`);
+				move.basePowerModifier = 1.3;
+			}
+		},
+		onBasePower(basePower, pokemon, target, move) {
+			// Multiplies the damage if the screen-destroyed modifier was flagged
+			if (move.basePowerModifier) {
+				return this.chainModify(move.basePowerModifier);
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ice",
+	},
