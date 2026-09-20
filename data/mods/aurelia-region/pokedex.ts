@@ -73,3 +73,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Lawless Spin"}, // Uniquely has this single ability
 		weightkg: 45.0, // Adjust weight as needed for a ghostly croupier
 	},
+
+	brumaroth: {
+		num: 10010,
+		name: "Brumaroth",
+		types: ["Ice", "Ground"],
+		baseStats: {hp: 110, atk: 165, def: 140, spa: 60, spd: 75, spe: 130}, // Total: 680 (Box Legend Stats!)
+		abilities: {0: "Neverending Winter"},
+		weightkg: 680.0, // Heavy bulldozer weight
+	},
