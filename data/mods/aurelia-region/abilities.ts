@@ -76,3 +76,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4.5,
 		num: -10004,
 	},
+
+	muddysurge: {
+		name: "Muddy Surge",
+		shortDesc: "Sets up a Swamp on the foe's side for 4 turns upon switch-in.",
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Muddy Surge');
+			pokemon.side.foe.addSideCondition('swamp');
+			// Overwrite default 4-turn duration for the pledge effect combo
+			const swampCondition = pokemon.side.foe.sideConditions['swamp'];
+			if (swampCondition) {
+				swampCondition.duration = 4;
+			}
+		},
+		rating: 4.5,
+		num: -10005,
+	},
