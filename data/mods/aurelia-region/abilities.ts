@@ -146,3 +146,45 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		num: -10007,
 	},
 			
+	lawlessspin: {
+		name: "Lawless Spin",
+		shortDesc: "Randomizes everyone's types at the end of each turn. Reverts when deactivated. Immune if Terastallized.",
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Lawless Spin');
+		},
+		onResidualPriority: 10, // Runs at the very end of the turn phase
+		onResidual(battle, pokemon) {
+			this.add('-ability', pokemon, 'Lawless Spin');
+			this.add('-message', `The wheel spins! Everyone's types are shifting!`);
+			
+			const allTypes = ['Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon', 'Dark', 'Steel', 'Fairy'];
+
+			for (const target of this.getAllActive()) {
+				if (target.fainted || target.terastallized) continue; // Skip knocked out or Terastallized Pokemon
+
+				// Generate two completely unique random types
+				const firstType = this.sample(allTypes);
+				let secondType = this.sample(allTypes);
+				while (secondType === firstType) {
+					secondType = this.sample(allTypes);
+				}
+
+				// Apply the randomized dual typing
+				target.setType([firstType, secondType]);
+				this.add('-start', target, 'typechange', `${firstType}/${secondType}`, '[from] ability: Lawless Spin');
+			}
+		},
+		onEnd(pokemon) {
+			this.add('-ability', pokemon, 'Lawless Spin', '[end]');
+			this.add('-message', `The wheel stopped spinning. Normal types restored!`);
+			
+			// Forcefully revert all active non-Terastallized Pokemon back to their natural species base types
+			for (const target of this.getAllActive()) {
+				if (target.fainted || target.terastallized) continue;
+				target.clearAllStats(); // Resets typing changes securely
+				this.add('-end', target, 'typechange', '[silent]');
+			}
+		},
+		rating: 4.5,
+		num: -10009,
+	},
