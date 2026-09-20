@@ -10,3 +10,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	},
 
 };
+
+export const Pokedex: {[k: string]: ModdedSpeciesData} = {
+	rougeent: {
+		num: 10002, // The next unique index number
+		name: "Rougeent",
+		types: ["Normal", "Fighting"],
+		baseStats: {hp: 61, atk: 90, def: 70, spa: 10, spd: 70, spe: 110}, // Total: 411
+		abilities: {0: "Guts", 1: "Merciless", H: "Double Whip"},
+		weightkg: 35.0, // Adjust weight as needed
+	},
+};
