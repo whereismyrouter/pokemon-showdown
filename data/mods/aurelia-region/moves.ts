@@ -46,3 +46,71 @@
 		target: "allAdjacentFoes", // This targets all adjacent enemies in both doubles and triples
 		type: "Fire",
 	},
+
+	glitchcopy: {
+		num: -2006,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Glitch Copy",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onHit(pokemon) {
+			const possibleMoves: string[] = [];
+			const team = pokemon.side.pokemon;
+
+			// Step 1: Loop through all non-KOed team members
+			for (const ally of team) {
+				if (ally === pokemon || ally.fainted) continue;
+
+				for (const moveSlot of ally.moveSlots) {
+					const move = this.dex.moves.get(moveSlot.id);
+					
+					// Step 2: Apply all your restriction filters
+					if (moveSlot.pp <= 0) continue; // Must have PP remaining
+					if (move.isMoveDescriptor || move.isMax || move.isZ) continue;
+					if (move.priority !== 0) continue; // No non-zero priority
+					if (move.ohko) continue; // No OHKO moves
+					
+					// Filter explicit banned moves requested
+					const explicitBans = ['substitute', 'transform', 'batonpass'];
+					if (explicitBans.includes(move.id)) continue;
+
+					// Filter Signature Moves (Showdown flags these via 'isNonstandard' or custom checks)
+					// We check if a move belongs strictly to a specific species signature pool
+					if (move.isNonstandard === 'Past' || move.realMove) continue; 
+					
+					// If it passes all checks, it's a valid choice!
+					possibleMoves.push(moveSlot.id);
+				}
+			}
+
+			// Step 3: Execute the copied move if any are available
+			if (!possibleMoves.length) {
+				this.add('-fail', pokemon, 'move: Glitch Copy');
+				return false;
+			}
+
+			const chosenMoveId = this.sample(possibleMoves);
+			const chosenMove = this.dex.moves.get(chosenMoveId);
+			
+			this.add('-message', `${pokemon.name} glitched and copied ${chosenMove.name}!`);
+
+			// Step 4: Find the original ally move slot and deduct 1 PP from them
+			for (const ally of team) {
+				if (ally.fainted) continue;
+				const slot = ally.moveSlots.find(m => m.id === chosenMoveId);
+				if (slot) {
+					slot.pp--;
+					break;
+				}
+			}
+
+			// Step 5: Use the move!
+			this.actions.useMove(chosenMoveId, pokemon);
+		},
+		secondary: null,
+		target: "self",
+		type: "Normal",
+	},
