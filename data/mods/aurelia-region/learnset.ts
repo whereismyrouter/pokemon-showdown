@@ -284,3 +284,43 @@
 		},
 	},
 						 
+	abshilu: {
+		learnset: {
+			// --- Signature Move ---
+			glitchcopy: ["9L1"],
+
+			// --- Thematic & Special Attacks ---
+			dazzlinggleam: ["9M"],
+			moonblast: ["9M"],
+			sludgebomb: ["9M"],
+			sludgewave: ["9M"],
+			psychic: ["9M"],
+			psyshock: ["9M"],
+			shadowball: ["9M"],
+			icebeam: ["9M"],
+			signalbeam: ["9M"],
+			darkpulse: ["9M"],
+			flashcannon: ["9M"],
+			discharge: ["9M"],
+			hypervoice: ["9M"],
+			triattack: ["9M"],
+			weatherball: ["9M"],
+
+			// --- Status, Control & Terrains ---
+			nastyplot: ["9M"],
+			calmmind: ["9M"],
+			trickroom: ["9M"],
+			teleport: ["9L1"],
+			recover: ["9M"],
+			toxic: ["9M"],
+			willowisp: ["9M"],
+			hypnosis: ["9M"],
+			protect: ["9M"],
+			taunt: ["9M"],
+			thunderwave: ["9M"],
+			conversion2: ["9L1"],
+			psychicterrain: ["9M"],
+			mistyterrain: ["9M"],
+		},
+	},
+				
