@@ -45,3 +45,18 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 3.5,
 		num: -10002,
 	},
+
+	shadowimpact: {
+		name: "Shadow Impact",
+		shortDesc: "After defeating a foe with a contact move, opposing items are disabled for 1 turn.",
+		onSourceAfterFaint(target, source, effect) {
+			if (effect && effect.flags['contact']) {
+				this.add('-ability', source, 'Shadow Impact');
+				this.add('-message', `The opposing side's items were suppressed by shadows!`);
+				// Applies an Embargo-like state to the opponent's side of the field for 1 turn
+				source.side.foe.addSideCondition('shadowimpactside');
+			}
+		},
+		rating: 4,
+		num: -10003,
+	},
