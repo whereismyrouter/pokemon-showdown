@@ -324,3 +324,39 @@
 		},
 	},
 				
+	jokergeist: {
+		learnset: {
+			// --- Signature Move ---
+			coinflip: ["9L1"],
+
+			// --- Your Specific Move Requests ---
+			suckerpunch: ["9M"],
+			darkpulse: ["9M"],
+			ironhead: ["9M"],
+			makeitrain: ["9M"], // Fits the croupier casino theme beautifully!
+			payday: ["9L1"],
+			guillotine: ["9M"],
+			psychocut: ["9M"],
+			psychic: ["9M"],
+			phantomforce: ["9M"],
+			shadowclaw: ["9M"],
+			willowisp: ["9M"],
+			protect: ["9M"],
+			poltergeist: ["9M"],
+			haze: ["9M"],
+			thunderwave: ["9M"],
+			bulletpunch: ["9M"],
+			rapidspin: ["9M"],
+			mortalspin: ["9M"],
+			trumpcard: ["9L1"], // Incredible flavor choice for a card/gambling ghost
+			dynamicpunch: ["9M"],
+			futuresight: ["9M"],
+			swordsdance: ["9M"],
+			nastyplot: ["9M"],
+			trickroom: ["9M"],
+			icebeam: ["9M"],
+			wish: ["9M"],
+			uturn: ["9M"],
+		},
+	},
+			
