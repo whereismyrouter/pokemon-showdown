@@ -6,7 +6,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Normal", "Electric"],
 		baseStats: {hp: 110, atk: 120, def: 100, spa: 5, spd: 100, spe: 36},
 		abilities: {0: "Iron Fist", 1: "Unaware", H: "Dizzy Stumble"},
-		weightkg: 150, // Le puse 150kg por su estilo de tanque pesón, puedes cambiarlo si quieres!
+		weightkg: 270, // Le puse 150kg por su estilo de tanque pesón, puedes cambiarlo si quieres!
 	},
 
 };
@@ -35,7 +35,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Water", "Fire"],
 		baseStats: {hp: 100, atk: 110, def: 95, spa: 110, spd: 95, spe: 50}, // Total: 560
 		abilities: {0: "Torrent", H: "Prisma-Lights"},
-		weightkg: 130.0, // Adjust weight as needed
+		weightkg: 240.0, // Adjust weight as needed
 	},
 
 	amaroshog: {
@@ -44,5 +44,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Grass", "Water"],
 		baseStats: {hp: 80, atk: 70, def: 105, spa: 115, spd: 75, spe: 115}, // Total: 560
 		abilities: {0: "Overgrow", H: "Muddy Surge"},
-		weightkg: 92.0, // Adjust weight as needed
+		weightkg: 170.0, // Adjust weight as needed
+	},
+
+	pyrostoke: {
+		num: 10006,
+		name: "Pyrostoke",
+		types: ["Fire", "Grass"],
+		baseStats: {hp: 125, atk: 140, def: 115, spa: 40, spd: 95, spe: 30}, // Total: 560
+		abilities: {0: "Blaze", H: "Flameburst"},
+		weightkg: 210.0, // Adjust weight as needed
 	},
