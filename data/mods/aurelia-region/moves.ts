@@ -114,3 +114,43 @@
 		target: "self",
 		type: "Normal",
 	},
+
+	coinflip: {
+		num: -2007,
+		accuracy: true, // Bypasses standard accuracy/evasion checks entirely
+		basePower: 170,
+		category: "Special",
+		name: "Coin Flip",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, pulse: 1},
+		onTryHit(target, source, move) {
+			// Hard-coded 50/50 coin flip. True accuracy, items, and abilities are completely ignored.
+			if (!this.randomChance(1, 2)) {
+				this.add('-message', `The coin landed on the wrong side! Backfire!`);
+				
+				// Find all potential friendly targets (the user + any active allies)
+				const allies = source.side.active.filter(a => a && !a.fainted);
+				if (allies.length > 0) {
+					const randomAlly = this.sample(allies);
+					this.actions.damage(this.actions.getDamage(source, randomAlly, move), randomAlly, source, move);
+				}
+				return false; // Stop the move from hitting the enemy
+			}
+			return true; // The coin landed on the right side! Proceed to hit.
+		},
+		onModifyTarget(target, source, move) {
+			// On a successful hit, choose a random active foe
+			const foes = source.side.foe.active.filter(f => f && !f.fainted);
+			if (foes.length > 0) {
+				return this.sample(foes);
+			}
+		},
+		onEffectiveness(typeMod, target, type, move) {
+			// Forces the type effectiveness multiplier to always be neutral (1x damage), ignoring resistances!
+			return 0;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Steel",
+	},
