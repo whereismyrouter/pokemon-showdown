@@ -115,3 +115,43 @@
 		},
 	},
 				
+	nymbulon: {
+		learnset: {
+			// --- Signature Move ---
+			boilingslapdown: ["9L1"],
+
+			// --- Your Specific Move Requests ---
+			firepunch: ["9M"],
+			thunderpunch: ["9M"],
+			scald: ["9M"],
+			waterpulse: ["9M"], // Internal ID for Water Pulse is 'waterpulse'
+			watergun: ["9L1"],
+			hydropump: ["9M"],
+			hydrocannon: ["9M"],
+			flamethrower: ["9M"],
+			flareblitz: ["9M"],
+			flamecharge: ["9M"],
+			pyroball: ["9M"],
+			weatherball: ["9M"],
+			focuspunch: ["9M"],
+			machpunch: ["9M"],
+			outrage: ["9M"],
+			thunderbolt: ["9M"],
+			smokescreen: ["9L1"],
+			clearsmog: ["9M"],
+			haze: ["9M"],
+			gigaimpact: ["9M"],
+			hyperbeam: ["9M"],
+			firespin: ["9M"],
+			rapidspin: ["9M"],
+			mortalspin: ["9M"],
+			hypervoice: ["9M"],
+			facade: ["9M"],
+			sunnyday: ["9M"],
+			raindance: ["9M"],
+			thunder: ["9M"],
+			earthquake: ["9M"],
+			highhorsepower: ["9M"],
+		},
+	},
+			
