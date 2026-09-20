@@ -37,3 +37,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Torrent", H: "Prisma-Lights"},
 		weightkg: 130.0, // Adjust weight as needed
 	},
+
+	amaroshog: {
+		num: 10005,
+		name: "Amaroshog",
+		types: ["Grass", "Water"],
+		baseStats: {hp: 80, atk: 70, def: 105, spa: 115, spd: 75, spe: 115}, // Total: 560
+		abilities: {0: "Overgrow", H: "Muddy Surge"},
+		weightkg: 92.0, // Adjust weight as needed
+	},
