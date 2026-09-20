@@ -28,3 +28,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Unburden", 1: "Keen Eye", H: "Shadow Impact"},
 		weightkg: 40.0, // Adjust weight as needed
 	},
+
+	nymbulon: {
+		num: 10004,
+		name: "Nymbulon",
+		types: ["Water", "Fire"],
+		baseStats: {hp: 100, atk: 110, def: 95, spa: 110, spd: 95, spe: 50}, // Total: 560
+		abilities: {0: "Torrent", H: "Prisma-Lights"},
+		weightkg: 130.0, // Adjust weight as needed
+	},
