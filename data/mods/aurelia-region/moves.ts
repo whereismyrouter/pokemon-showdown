@@ -322,3 +322,21 @@
 		target: "self",
 		type: "Fighting",
 	},
+
+	doombeam: {
+		num: -2011,
+		accuracy: 100,
+		basePower: 230,
+		category: "Special",
+		name: "Doom Beam",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, recharge: 1, mirror: 1}, // Has the recharge flag set
+		self: {
+			volatileStatus: 'mustrecharge', // Forces the user to recharge on the next turn
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dark", // Fits the 'Doom' theme perfectly as a Dark-type tactical nuke
+	},
+		
