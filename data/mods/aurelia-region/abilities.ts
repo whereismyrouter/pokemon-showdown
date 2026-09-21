@@ -414,3 +414,25 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10022,
 	},
+
+	ultradrain: {
+		name: "Ultradrain",
+		shortDesc: "The user recovers 30% more HP from health-draining attacks. Stacks with Big Root.",
+		onSourceModifyDamage(damage, source, target, move) {
+			// If the move has a built-in draining mechanism, increase the healing fraction dynamically
+			if (move.drain) {
+				// Increases the base healing component fraction by 1.3x (stacks additively/multiplicatively with items)
+				move.realMove = move.realMove || {};
+				move.realMove.ultradrainBoost = true;
+			}
+		},
+		onTryHealPriority: 1,
+		onTryHeal(damage, target, source, effect) {
+			// This specifically catches draining move calculation checkpoints to push the final healing upward
+			if (effect && effect.id === 'drain' && target.volatiles['ultradrainboost']) {
+				return this.chainModify(1.3);
+			}
+		},
+		rating: 4,
+		num: -10023,
+	},
