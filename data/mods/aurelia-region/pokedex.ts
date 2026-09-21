@@ -9,7 +9,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 270, // Le puse 150kg por su estilo de tanque pesón, puedes cambiarlo si quieres!
 	},
 
-};
+
 
 	rougeent: {
 		num: 10002,
@@ -393,3 +393,4 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Steadfast", 1: "Last Breath", H: "Scrappy"}, // Last Breath added to Slot 1!
 	},
 		
+};
