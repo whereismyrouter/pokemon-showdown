@@ -830,3 +830,40 @@
 		},
 	},
 				
+	kingambit: {
+		learnset: {
+			inherit: true,
+			riposte: ["9M"],
+		},
+	},
+	sneasler: {
+		learnset: {
+			inherit: true,
+			riposte: ["9M"],
+		},
+	},
+	lucario: {
+		learnset: {
+			inherit: true,
+			riposte: ["9M"],
+		},
+	},
+	sirfetchd: {
+		learnset: {
+			inherit: true,
+			riposte: ["9M"],
+		},
+	},
+	weavile: {
+		learnset: {
+			inherit: true,
+			riposte: ["9M"],
+		},
+	},
+	gallade: {
+		learnset: {
+			inherit: true,
+			riposte: ["9M"],
+		},
+	},
+				
