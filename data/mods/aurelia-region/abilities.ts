@@ -273,3 +273,18 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10014,
 	},
+
+	totalocclusion: {
+		name: "Total Occlusion",
+		shortDesc: "On switch-in, summons a Lunar Eclipse for 5 turns.",
+		onStart(pokemon) {
+			this.field.setWeather('lunareclipse');
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'lunareclipse') {
+				this.field.clearWeather();
+			}
+		},
+		rating: 5,
+		num: -10015,
+	},
