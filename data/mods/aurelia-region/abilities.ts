@@ -451,3 +451,18 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10024,
 	},
+
+	lividbuzz: {
+		name: "Livid Buzz",
+		shortDesc: "Al entrar al campo, desata una Plaga por 5 turnos que beneficia masivamente a los tipos Bicho.",
+		onStart(pokemon) {
+			this.field.setWeather('plague');
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'plague') {
+				this.field.clearWeather();
+			}
+		},
+		rating: 5,
+		num: -10025,
+	},
