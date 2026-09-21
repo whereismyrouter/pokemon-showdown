@@ -267,3 +267,58 @@
 		target: "normal",
 		type: "Fairy",
 	},
+
+	riposte: {
+		num: -2010,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Riposte",
+		pp: 10,
+		priority: 5, // Highly reactive +5 priority to get ready before other priority moves
+		flags: {protect: 1},
+		onTryPriority(priority, pokemon, target, move) {
+			// Prepares the stance at the start of the action phase
+		},
+		onHit(pokemon) {
+			this.add('-singleturn', pokemon, 'move: Riposte');
+			pokemon.addVolatile('ripostestance');
+		},
+		condition: {
+			duration: 1,
+			onStart(pokemon) {
+				this.add('-message', `${pokemon.name} readied its blade for a perfect riposte!`);
+			},
+			// Intercepts any move before it hits anyone on the user's side
+			onAnyTryMove(source, target, move) {
+				const user = this.effectState.target;
+				
+				// Only intercept if the opponent is using a high-priority move targeting the user's side
+				if (source.side !== user.side && move.priority > 0 && target.side === user.side) {
+					this.add('-activate', user, 'move: Riposte');
+					this.add('-message', `${user.name} parried ${source.name}'s ${move.name}!`);
+
+					if (this.gameType === 'singles') {
+						// SINGLES: The attacker hits themselves with their own move!
+						this.add('-message', `${source.name} was forced to strike itself!`);
+						this.actions.useMove(move.id, source, source);
+					} else {
+						// DOUBLES: Redirect the attack to the opponent's active ally
+						const foeAllies = source.side.active.filter(a => a && a !== source && !a.fainted);
+						if (foeAllies.length > 0) {
+							const randomFoeAlly = this.sample(foeAllies);
+							this.add('-message', `${user.name} redirected the strike toward ${randomFoeAlly.name}!`);
+							this.actions.useMove(move.id, source, randomFoeAlly);
+						} else {
+							// Fallback to hitting themselves if no ally is active in doubles
+							this.actions.useMove(move.id, source, source);
+						}
+					}
+					return false; // Cancels the original execution of the move against your team entirely!
+				}
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Fighting",
+	},
