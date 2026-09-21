@@ -354,7 +354,7 @@
 			duration: 4, // 4 ticks internos equivalen a la resolución del turno actual + 3 turnos completos de atrapamiento
 			onStart(pokemon, source) {
 				this.add('-start', pokemon, 'Shadow Chains', '[silent]');
-				this.add('-message', `¡Cadenas espectrales han encadenado a ${pokemon.name} al suelo!`);
+				this.add('-message', `${pokemon.name} was chained to the ground!`);
 			},
 			onTrapPokemon(pokemon) {
 				pokemon.tryTrap(); // Fuerza el estado de atrapamiento independientemente de quién esté en el campo
@@ -365,7 +365,7 @@
 			},
 			onEnd(pokemon) {
 				this.add('-end', pokemon, 'Shadow Chains', '[silent]');
-				this.add('-message', `Las cadenas de sombras que retenían a ${pokemon.name} se han desvanecido.`);
+				this.add('-message', `The shadow chains that held ${pokemon.name} captive vanished away.`);
 			},
 		},
 		secondary: null,
