@@ -190,3 +190,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 0.8,
 	},
 			
+	helistionix: {
+		num: 10011,
+		name: "Helistionix",
+		types: ["Steel", "Fairy"],
+		baseStats: {hp: 130, atk: 160, def: 220, spa: 50, spd: 110, spe: 5}, // Total: 675 (Incredible trick room tank!)
+		abilities: {0: "Crimson Clouds"},
+		weightkg: 590.0, // Ultra-dense composition
+	},
+						
