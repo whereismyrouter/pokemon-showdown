@@ -466,3 +466,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10025,
 	},
+
+	ironfist: {
+		inherit: true,
+		onBasePowerPriority: 23,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['punch']) {
+				this.debug('Iron Fist boost');
+				return this.chainModify([6144, 4096]); // In Showdown's native engine, 6144/4096 represents exactly a 1.5x boost
+			}
+		},
+	},
