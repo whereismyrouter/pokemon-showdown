@@ -340,3 +340,35 @@
 		type: "Dark", // Fits the 'Doom' theme perfectly as a Dark-type tactical nuke
 	},
 		
+	shadowchains: {
+		num: -2012,
+		accuracy: 80,
+		basePower: 20,
+		category: "Physical",
+		name: "Shadow Chains",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1}, // No tiene flag de contacto porque usa cadenas espectrales a distancia
+		volatileStatus: 'shadowchains',
+		condition: {
+			duration: 4, // 4 ticks internos equivalen a la resolución del turno actual + 3 turnos completos de atrapamiento
+			onStart(pokemon, source) {
+				this.add('-start', pokemon, 'Shadow Chains', '[silent]');
+				this.add('-message', `¡Cadenas espectrales han encadenado a ${pokemon.name} al suelo!`);
+			},
+			onTrapPokemon(pokemon) {
+				pokemon.tryTrap(); // Fuerza el estado de atrapamiento independientemente de quién esté en el campo
+			},
+			onResidualPriority: 11,
+			onResidual(pokemon) {
+				this.damage(pokemon.baseMaxHP / 16); // Hace daño residual de 1/16 por cada turno atrapado
+			},
+			onEnd(pokemon) {
+				this.add('-end', pokemon, 'Shadow Chains', '[silent]');
+				this.add('-message', `Las cadenas de sombras que retenían a ${pokemon.name} se han desvanecido.`);
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ghost",
+	},
