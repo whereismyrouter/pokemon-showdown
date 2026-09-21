@@ -436,3 +436,18 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4,
 		num: -10023,
 	},
+
+	tornadowarning: {
+		name: "Tornado Warning",
+		shortDesc: "On switch-in, summons Gusty Winds for 5 turns.",
+		onStart(pokemon) {
+			this.field.setWeather('gustywinds');
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'gustywinds') {
+				this.field.clearWeather();
+			}
+		},
+		rating: 5,
+		num: -10024,
+	},
