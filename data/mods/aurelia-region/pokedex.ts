@@ -199,3 +199,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 590.0, // Ultra-dense composition
 	},
 						
+	fencerush: {
+		num: 10012,
+		name: "Fencerush",
+		types: ["Grass", "Fighting"],
+		baseStats: {hp: 60, atk: 95, def: 70, spa: 40, spd: 65, spe: 105}, // Total: 435
+		abilities: {0: "Trained Focus"}, // Uniquely has this single ability
+		weightkg: 28.0, // Light and swift for an agile fencer
+	},
