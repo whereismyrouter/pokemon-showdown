@@ -611,3 +611,35 @@
 		},
 	},
 							
+	kingambitaurelian: {
+		learnset: {
+			// --- Signature Move ---
+			tacticalblast: ["9L1"],
+
+			// --- Special Fighting & Steel STAB Attacks ---
+			aurasphere: ["9M"],
+			focusblast: ["9M"],
+			vacuumwave: ["9L1"], // Extra lower priority special option
+			flashcannon: ["9M"],
+			makeitrain: ["9M"], // Fits a general managing strategic wealth
+			steelbeam: ["9M"],
+
+			// --- Tactical Coverage Options ---
+			darkpulse: ["9M"],
+			shadowball: ["9M"],
+			thunderbolt: ["9M"],
+			icebeam: ["9M"],
+			hyperbeam: ["9M"],
+
+			// --- Strategic Utility & General Commands ---
+			nastyplot: ["9M"], // Maximizes Special Attack setup
+			calmmind: ["9M"],
+			agility: ["9M"],
+			coaching: ["9M"],
+			allyswitch: ["9M"],
+			protect: ["9M"],   // Keeps our global rule intact
+			substitute: ["9M"],
+			uturn: ["9M"],     // Allows the general to fall back tactically
+		},
+	},
+				
