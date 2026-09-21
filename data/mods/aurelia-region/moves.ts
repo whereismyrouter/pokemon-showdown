@@ -598,3 +598,27 @@
 		type: "Ghost",
 	},
 			
+	nominalblast: {
+		num: -2020,
+		accuracy: 100,
+		basePower: 50,
+		category: "Special",
+		name: "Nominal Blast",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onModifyBasePower(basePower, pokemon, target, move) {
+			// Extract the length of the target's active name (checks nickname first, falls back to species name)
+			const nameLength = target.name.length;
+			
+			// Adds +20 base power for each character in the name
+			const bonusPower = nameLength * 20;
+			
+			this.add('-message', `Nominal Blast analyzed the name "${target.name}" (${nameLength} characters)!`);
+			return basePower + bonusPower;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+	},
+			
