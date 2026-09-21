@@ -363,3 +363,23 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		requiredItem: "Nidoqueenite",
 	},
 		
+	incineroar: {
+		inherit: true,
+		isNonstandard: "Past", // ¡Dexit absoluto para Incineroar! Queda baneado del formato.
+	},
+	jellicent: {
+		inherit: true,
+		isNonstandard: null, // Convierte a Jellicent en un Pokémon 100% legal y seleccionable
+		// Opcional: Aquí puedes añadirle bufos si quieres, o dejarlo con sus stats oficiales heredados nativamente
+	},
+
+	toxapex: {
+		inherit: true,
+		// Reemplaza Regenerator en el slot de Habilidad Oculta por Shell Armor
+		abilities: {0: "Merciless", 1: "Limber", H: "Shell Armor"}, 
+	},
+	alomomola: {
+		inherit: true,
+		// Reemplaza Regenerator en el slot de Habilidad Oculta por Oblivious
+		abilities: {0: "Healer", 1: "Hydration", H: "Oblivious"}, 
+	},
