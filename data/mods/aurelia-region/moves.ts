@@ -558,3 +558,9 @@
 		target: "normal",
 		type: "Fairy",
 	},
+
+				shadowpunch: {
+		inherit: true, // Pulls the official accuracy (true) and flags natively
+		basePower: 75, // Upgraded from 60 to 75 BP!
+	},
+			
