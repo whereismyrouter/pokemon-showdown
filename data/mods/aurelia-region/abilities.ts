@@ -398,3 +398,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4.5,
 		num: -10021,
 	},
+
+	regalflight: {
+		name: "Regal Flight",
+		shortDesc: "If Trick Room or opposing Tailwind is active, this Pokemon always moves first in its priority bracket.",
+		onOrder(pokemon) {
+			const sideFoe = pokemon.side.foe;
+			// Check if Trick Room is active on the field or Tailwind is active on the opponent's side
+			if (this.field.pseudoWeather['trickroom'] || sideFoe.sideConditions['tailwind']) {
+				this.add('-ability', pokemon, 'Regal Flight');
+				// Forces the action queue to prioritize Aerovoy over standard speed calculations
+				pokemon.chooseAction({priority: 0.5}); 
+			}
+		},
+		rating: 5,
+		num: -10022,
+	},
