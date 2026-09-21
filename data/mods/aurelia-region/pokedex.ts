@@ -207,3 +207,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Trained Focus"}, // Uniquely has this single ability
 		weightkg: 28.0, // Light and swift for an agile fencer
 	},
+
+	galemar: {
+		num: 10013,
+		name: "Galemar",
+		types: ["Water", "Dark"],
+		baseStats: {hp: 135, atk: 155, def: 130, spa: 115, spd: 105, spe: 80}, // Total: 720 (A true titan!)
+		abilities: {0: "Searise"},
+		weightkg: 950.0, // Heavy leviathan with a sunken ship
+	},
