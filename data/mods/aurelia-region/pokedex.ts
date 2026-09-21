@@ -225,3 +225,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Dark Sun", 1: "Total Occlusion", H: "Doomsday"},
 		weightkg: 420.0, // A massive but gentle cosmic entity
 	},
+
+	perishtoll: {
+		num: 10015,
+		name: "Perish Toll",
+		types: ["Steel", "Ghost"],
+		baseStats: {hp: 95, atk: 115, def: 150, spa: 125, spd: 75, spe: 45}, // Total: 605 (Paradox profile)
+		abilities: {0: "Photosynthesis"},
+		weightkg: 320.0, // Heavy spectral bell
+	},
