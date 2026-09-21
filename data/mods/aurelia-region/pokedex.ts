@@ -392,5 +392,19 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Steadfast", 1: "Last Breath", H: "Scrappy"}, // Last Breath added to Slot 1!
 	},
-		
+		mimikyubusted: {
+		inherit: true,
+	},
+	mimikyumega: {
+		num: 778,
+		name: "Mimikyu-Mega",
+		baseSpecies: "Mimikyu",
+		form: "Mega",
+		types: ["Ghost", "Fairy"],
+		baseStats: {hp: 55, atk: 150, def: 100, spa: 50, spd: 125, spe: 96}, // Total: 576 (+100 Stats, Speed kept at 96!)
+		abilities: {0: "Imposter Veil"},
+		weightkg: 0.7,
+		requiredItem: "Mimikyubite",
+	},
+	
 };
