@@ -435,3 +435,34 @@
 		},
 	},
 				
+	fencerush: {
+		learnset: {
+			// --- Slicing & Tactical STAB Attacks ---
+			leafblade: ["9M"],
+			sacredsword: ["9M"],
+			closecombat: ["9M"],
+			brickbreak: ["9M"],
+			machpunch: ["9M"],
+			trailblaze: ["9M"],
+			bulletseed: ["9M"],
+			seedbomb: ["9M"],
+
+			// --- Coverage & Technical Options ---
+			nightslash: ["9M"],
+			psychocut: ["9M"],
+			aerialace: ["9M"],
+			smartstrike: ["9M"],
+			falseswipe: ["9L1"],
+			slash: ["9L1"],
+			furycutter: ["9L1"],
+
+			// --- Status & Setup ---
+			riposte: ["9L1"],
+			swordsdance: ["9M"],
+			agility: ["9M"],
+			detect: ["9L1"],
+			protect: ["9M"], // Keeps our global rule intact
+			uturn: ["9M"],
+		},
+	},
+			
