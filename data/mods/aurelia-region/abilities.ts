@@ -258,3 +258,18 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10013,
 	},
+
+	darksun: {
+		name: "Dark Sun",
+		shortDesc: "On switch-in, summons a Solar Eclipse for 5 turns.",
+		onStart(pokemon) {
+			this.field.setWeather('solareclipse');
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'solareclipse') {
+				this.field.clearWeather();
+			}
+		},
+		rating: 5,
+		num: -10014,
+	},
