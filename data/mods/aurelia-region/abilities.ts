@@ -337,3 +337,37 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4.5,
 		num: -10019,
 	},
+
+	countup: {
+		name: "Count-up",
+		shortDesc: "The user's Attack and Special Attack rise by 5% for each consecutive turn it stays on the field.",
+		onStart(pokemon) {
+			this.effectState.turnCounter = 0;
+			this.add('-ability', pokemon, 'Count-up');
+		},
+		onResidualPriority: 26, // Ticks up right at the very end of the turn cycle
+		onResidual(battle, pokemon) {
+			if (!pokemon.fainted) {
+				this.effectState.turnCounter++;
+				this.add('-message', `The clock ticks... Everghast's power is mounting! (Turn ${this.effectState.turnCounter})`);
+			}
+		},
+		// --- Dynamically scales physical Attack ---
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, pokemon) {
+			const turns = this.effectState.turnCounter || 0;
+			if (turns > 0) {
+				return this.chainModify(1 + (turns * 0.05));
+			}
+		},
+		// --- Dynamically scales Special Attack ---
+		onModifySpAPriority: 5,
+		onModifySpA(spa, pokemon) {
+			const turns = this.effectState.turnCounter || 0;
+			if (turns > 0) {
+				return this.chainModify(1 + (turns * 0.05));
+			}
+		},
+		rating: 4.5,
+		num: -10020,
+	},
