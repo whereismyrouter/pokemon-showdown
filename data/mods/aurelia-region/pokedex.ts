@@ -283,3 +283,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Regal Flight"}, // Uniquely has this single signature ability
 		weightkg: 15.0, // Sleek, aerodynamic frame
 	},
+
+	drawndrein: {
+		num: 10019,
+		name: "Drawndrein",
+		types: ["Dark", "Fairy"],
+		baseStats: {hp: 105, atk: 155, def: 130, spa: 60, spd: 100, spe: 50}, // Total: 600 (Pseudo-legendary profile)
+		abilities: {0: "Ultradrain", 1: "Rough Skin", H: "Intimidate"},
+		weightkg: 410.0, // Heavy wood and root amalgamation
+	},
