@@ -371,3 +371,30 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4.5,
 		num: -10020,
 	},
+
+	swiftstart: {
+		name: "Swift Start",
+		shortDesc: "During the first 2 turns of the battle, the user's Speed and Special Attack are doubled.",
+		onStart(pokemon) {
+			if (this.turn <= 2) {
+				this.add('-ability', pokemon, 'Swift Start');
+				this.add('-message', `${pokemon.name} is overflowing with primitive universal energy!`);
+			}
+		},
+		// --- Doubles Speed if global turn count is 1 or 2 ---
+		onModifySpePriority: 5,
+		onModifySpe(spe, pokemon) {
+			if (this.turn <= 2) {
+				return this.chainModify(2.0);
+			}
+		},
+		// --- Doubles Special Attack if global turn count is 1 or 2 ---
+		onModifySpAPriority: 5,
+		onModifySpA(spa, pokemon) {
+			if (this.turn <= 2) {
+				return this.chainModify(2.0);
+			}
+		},
+		rating: 4.5,
+		num: -10021,
+	},
