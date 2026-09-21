@@ -395,3 +395,68 @@
 		target: "normal",
 		type: "Fighting",
 	},
+
+	whispingmemory: {
+		num: -2014,
+		accuracy: 100,
+		basePower: 20,
+		category: "Physical", // Default category, overridden dynamically per hit
+		name: "Whisping Memory",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		// --- The core complex loop that handles the fallen allies ---
+		onPrepareHit(target, source, move) {
+			const team = source.side.pokemon;
+			const faintedAllies = team.filter(p => p.fainted);
+
+			if (faintedAllies.length === 0) {
+				this.add('-fail', source, 'move: Whisping Memory');
+				return null;
+			}
+
+			// Forces the move to hit exactly once for every fallen teammate
+			move.multihit = faintedAllies.length;
+			// Stores the fainted allies in the move state so we can access them hit-by-hit
+			move.realMove = move.realMove || {};
+			move.realMove.faintedList = faintedAllies;
+		},
+		// --- This hooks into EACH individual hit of the multi-hit sequence ---
+		onHit(target, source, move) {
+			const faintedList = move.realMove?.faintedList;
+			if (!faintedList) return;
+
+			// Get the specific fallen ally for this current hit number
+			const currentHitIndex = move.hit - 1;
+			const ally = faintedList[currentHitIndex];
+
+			if (ally) {
+				// Step 1: Announce which fallen teammate is attacking from beyond the grave
+				this.add('-message', `The spirit of ${ally.name} strikes through the Whisping Memory!`);
+
+				// Step 2: Compare its raw base stats to see if it's a physical or special attacker
+				const highestStatName = ally.baseSpecies.baseStats.atk >= ally.baseSpecies.baseStats.spa ? 'atk' : 'spa';
+				
+				// Step 3: Dynamically shift the move category and calculation hooks for this hit
+				if (highestStatName === 'atk') {
+					move.category = 'Physical';
+					move.overrideOffensiveStat = 'atk';
+					// Temporarily inject the ally's physical attack stat value for calculation
+					source.storedStats.atk = ally.baseSpecies.baseStats.atk; 
+				} else {
+					move.category = 'Special';
+					move.overrideOffensiveStat = 'spa';
+					// Temporarily inject the ally's special attack stat value for calculation
+					source.storedStats.spa = ally.baseSpecies.baseStats.spa;
+				}
+			}
+		},
+		// --- Cleanup Step: Revert Everghast's stats back to normal after the move finishes ---
+		onAfterMove(source) {
+			source.storedStats.atk = source.baseSpecies.baseStats.atk;
+			source.storedStats.spa = source.baseSpecies.baseStats.spa;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ghost",
+	},
