@@ -279,3 +279,74 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.add('-weather', 'none');
 		},
 	},
+
+	gustywinds: {
+		name: "Gusty Winds",
+		effectType: "Weather",
+		duration: 5,
+		onStart(battle, source, effect) {
+			this.add('-weather', 'Gusty Winds');
+			this.add('-message', "A severe Tornado Warning was issued! Violent Gusty Winds are tearing up the field!");
+		},
+		onResidualPriority: 1,
+		onResidual(battle) {
+			this.add('-weather', 'Gusty Winds', '[upkeep]');
+			this.eachEvent('Weather');
+		},
+		// --- 1. Flying-types double their speed tier ---
+		onModifySpePriority: 10,
+		onModifySpe(spe, pokemon) {
+			if (pokemon.hasType('Flying')) {
+				return this.chainModify(2.0);
+			}
+		},
+		// --- 2. Dynamically activates Wind Rider profiles field-wide ---
+		onUpdate(battle) {
+			for (const pokemon of this.getAllActive()) {
+				if (pokemon.hasAbility('windrider') && !pokemon.volatiles['windriderboost']) {
+					this.add('-activate', pokemon, 'ability: Wind Rider');
+					this.boost({atk: 1}, pokemon);
+					pokemon.addVolatile('windriderboost'); // Custom flag to prevent infinite stacking loop
+				}
+			}
+		},
+		// --- 3 & 4. Modifies the parameters of Brave Bird and Hurricane ---
+		onModifyMove(move, pokemon) {
+			// Brave Bird: Upgrades to 150 Base Power and forces 1/2 (50%) recoil damage
+			if (move.id === 'bravebird') {
+				move.basePower = 150;
+				move.recoil = [1, 2]; // 50% recoil fraction calculation
+			}
+			// Hurricane: Targets absolutely everyone active on the pitch simultaneously
+			if (move.id === 'hurricane') {
+				move.target = 'all'; // Hits user, ally, and both opposing targets
+			}
+		},
+		// --- 5. Cleans all entry hazards from BOTH sides of the pitch at turn-end ---
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onEndTurn(battle) {
+			const sides = [this.sides[0], this.sides[1]];
+			const hazards = ['stealthrock', 'spikes', 'toxicspikes', 'stickyweb', 'spikes'];
+			let hazardsCleared = false;
+
+			for (const side of sides) {
+				for (const hazard of hazards) {
+					if (side.sideConditions[hazard]) {
+						side.removeSideCondition(hazard);
+						hazardsCleared = true;
+					}
+				}
+			}
+			if (hazardsCleared) {
+				this.add('-message', "The violent gusts of wind swept all entry hazards right off the field!");
+			}
+		},
+		onEnd() {
+			this.add('-weather', 'none');
+			// Remove temporary Wind Rider tracking flags when weather fades
+			for (const pokemon of this.getAllActive()) {
+				pokemon.removeVolatile('windriderboost');
+			}
+		},
+	},
