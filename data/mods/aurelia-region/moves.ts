@@ -622,3 +622,24 @@
 		type: "Psychic",
 	},
 			
+	trickroom: {
+		inherit: true, // Pulls official accuracy, PP, and status flags
+		effect: {
+			duration: 5, // Baseline duration remains 5 turns
+			onStart(target, source) {
+				// Intercepts the casting turn to check for the custom extender item
+				if (source && source.hasItem('brokentransmissor')) {
+					this.effectState.duration = 8; // Extends Trick Room execution parameters to 8 turns!
+				}
+				this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
+			},
+			onResidualPriority: 27,
+			onResidual(battle) {
+				this.add('-fieldactivate', 'move: Trick Room', '[upkeep]');
+			},
+			onEnd() {
+				this.add('-fieldend', 'move: Trick Room');
+			},
+		},
+	},
+		
