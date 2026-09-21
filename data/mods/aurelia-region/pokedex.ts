@@ -297,3 +297,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 50, atk: 50, def: 77, spa: 134, spd: 77, spe: 132}, // Massive speed and power upgrade!
 	},
+
+	rotomfan: {
+		inherit: true,
+		abilities: {0: "Tornado Warning"}, // Replaces Levitate completely!
+	},
