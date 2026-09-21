@@ -823,3 +823,10 @@
 		},
 	},
 				
+	unown: {
+		learnset: {
+			inherit: true,
+			nominalblast: ["9L1"], // Unown finally breaks free from Hidden Power!
+		},
+	},
+				
