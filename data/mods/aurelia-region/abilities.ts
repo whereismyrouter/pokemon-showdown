@@ -303,3 +303,21 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10016,
 	},
+
+	rottentouch: {
+		name: "Rotten Touch",
+		shortDesc: "The user's contact moves have a 10% chance to inflict a random status condition.",
+		onSourceHit(target, source, move, effect) {
+			// Trigger only on contact moves that deal damage and if the target doesn't already have a status
+			if (effect && effect.flags['contact'] && !target.status) {
+				if (this.randomChance(1, 10)) { // 10% Activation chance
+					const statuses = ['psn', 'tox', 'brn', 'par', 'slp', 'frz'];
+					const randomStatus = this.sample(statuses);
+					
+					target.trySetStatus(randomStatus, source);
+				}
+			}
+		},
+		rating: 4,
+		num: -10018,
+	},
