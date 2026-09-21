@@ -243,3 +243,18 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4.5,
 		num: -10012,
 	},
+
+	searise: {
+		name: "Searise",
+		shortDesc: "On switch-in, causes a Flood terrain that dynamically slows down non-Water types over time.",
+		onStart(pokemon) {
+			this.field.setTerrain('flood');
+		},
+		onEnd(pokemon) {
+			if (this.field.terrain === 'flood') {
+				this.field.clearTerrain();
+			}
+		},
+		rating: 5,
+		num: -10013,
+	},
