@@ -490,3 +490,71 @@
 		target: "allAdjacentFoes", // Targets both opponents in double battles without hitting your ally
 		type: "Flying",
 	},
+
+	draincage: {
+		num: -2017,
+		accuracy: 100,
+		basePower: 30,
+		category: "Physical",
+		name: "Drain Cage",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		volatileStatus: 'draincage',
+		condition: {
+			duration: 5, // Lasts between 4 and 5 turns natively
+			durationModifier: true,
+			onStart(pokemon, source) {
+				this.add('-start', pokemon, 'Drain Cage', '[silent]');
+				this.add('-message', `Draining roots from ${source.name} have trapped ${pokemon.name} in a Drain Cage!`);
+			},
+			onTrapPokemon(pokemon) {
+				pokemon.tryTrap(); // Prevents manual switching
+			},
+			onResidualPriority: 11,
+			onResidual(pokemon) {
+				const source = this.effectState.source;
+				if (source && !source.fainted && !pokemon.fainted) {
+					// Drains a powerful 1/8th max HP per turn cycle
+					const damage = this.damage(pokemon.baseMaxHP / 8); 
+					if (damage) {
+						this.heal(damage, source, pokemon); // Transfers the stolen health directly to the user
+						this.add('-message', `The Drain Cage absorbs vitality from ${pokemon.name}!`);
+					}
+				}
+			},
+			onEnd(pokemon) {
+				this.add('-end', pokemon, 'Drain Cage', '[silent]');
+				this.add('-message', `The regular binding of the Drain Cage faded from ${pokemon.name}.`);
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+	},
+
+	animicdrain: {
+		num: -2018,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Animic-Drain",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		drain:, // Drains exactly 25% of the damage dealt
+		secondary: {
+			chance: 20, // 20% chance to Torment the target
+			volatileStatus: 'torment',
+		},
+		// --- Forces a massive 3x damage multiplier exclusively against Dragon-types ---
+		onEffectiveness(typeMod, target, type, move) {
+			if (type === 'Dragon') {
+				// Replaces standard 2x super-effective math with a hard 3x scaling check
+				return Math.log2(3); 
+			}
+			return typeMod;
+		},
+		target: "normal",
+		type: "Fairy",
+	},
