@@ -195,3 +195,55 @@
 		target: "normal",
 		type: "Ice",
 	},
+
+	weatherball: {
+		inherit: true,
+		onModifyType(move, pokemon) {
+			switch (this.field.effectiveWeather()) {
+				case 'sunnyday':
+				case 'desolateland':
+					move.type = 'Fire';
+					break;
+				case 'raindance':
+				case 'primordialsea':
+					move.type = 'Water';
+					break;
+				case 'sandstorm':
+					move.type = 'Rock';
+					break;
+				case 'hail':
+				case 'snow':
+				case 'primalsnow':
+					move.type = 'Ice';
+					break;
+				// --- Custom Weather Multi-Type Shifts ---
+				case 'ragestorm':
+					move.type = 'Fighting';
+					break;
+				case 'plague':
+					move.type = 'Bug';
+					break;
+				case 'solareclipse':
+					move.type = 'Dark';
+					break;
+				case 'lunareclipse':
+					move.type = 'Ghost';
+					break;
+				case 'gustywinds':
+					move.type = 'Flying';
+					break;
+				case 'redsun':
+					move.type = 'Normal'; // Stays normal but gets the damage boost below!
+					break;
+			}
+		},
+		onModifyMove(move, pokemon) {
+			const doublePowerWeathers = [
+				'sunnyday', 'desolateland', 'raindance', 'primordialsea', 'sandstorm', 'hail', 'snow', 'primalsnow',
+				'ragestorm', 'plague', 'solareclipse', 'lunareclipse', 'gustywinds', 'redsun'
+			];
+			if (doublePowerWeathers.includes(this.field.effectiveWeather())) {
+				move.basePower *= 2;
+			}
+		},
+	},
