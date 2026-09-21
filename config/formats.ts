@@ -5993,7 +5993,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		{
 		name: "[Gen 9] Aurelia Region",
 		desc: `Custom format featuring unique weather abilities, regional forms, and optimized balance tweaks.`,
-		mod: 'aureliaregion', // Must match your folder name exactly!
+		mod: 'aurelia-region', 
 		ruleset: ['Standard', 'Terastal Clause'],
 	},
 	
