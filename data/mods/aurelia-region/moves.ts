@@ -564,3 +564,37 @@
 		basePower: 75, // Upgraded from 60 to 75 BP!
 	},
 			
+	shadowimpact: {
+		num: -2019,
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		name: "Shadow Impact",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1}, // Main hit has the contact flag
+		onHit(target, source, move) {
+			// Find adjacent enemies to the target in double/triple battles
+			const adjacentFoes = target.adjacentFoes();
+			if (adjacentFoes.length > 0) {
+				this.add('-message', `The impact created a deafening sonic boom!`);
+				
+				// Create a temporary move structure for the 30 BP sound shockwave
+				const soundWave = this.dex.moves.get(move.id);
+				soundWave.basePower = 30;
+				soundWave.category = "Special"; // Special shockwave category
+				soundWave.type = "Normal"; // Sound waves traditionally fit Normal typing profiles
+				soundWave.flags = {protect: 1, sound: 1}; // Specifically tagged as a sound-based move!
+
+				for (const foe of adjacentFoes) {
+					if (!foe.fainted) {
+						this.actions.damage(this.actions.getDamage(source, foe, soundWave), foe, source, soundWave);
+					}
+				}
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ghost",
+	},
+			
