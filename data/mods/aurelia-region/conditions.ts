@@ -408,3 +408,45 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.add('-weather', 'none');
 		},
 	},
+
+	tantrumbreakeractive: {
+		name: "Tantrum Breaker (Active)",
+		duration: 1, // Lasts strictly for the following turn cycle
+		onStart(pokemon) {
+			this.add('-start', pokemon, 'Tantrum Breaker', '[silent]');
+			this.add('-message', `${pokemon.name} is throwing a massive tantrum! Its physical power has exploded!`);
+		},
+		// Doubles Physical Attack
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, pokemon) {
+			return this.chainModify(2.0);
+		},
+		// Forces all attacks to completely bypass accuracy checks (cannot miss)
+		onAnyAccuracy(accuracy, target, source, move) {
+			if (source === this.effectState.target) return true;
+		},
+		onEnd(pokemon) {
+			this.add('-end', pokemon, 'Tantrum Breaker', '[silent]');
+		},
+	},
+	reconcentrateactive: {
+		name: "Re-concentrate (Active)",
+		duration: 1,
+		onStart(pokemon) {
+			this.add('-start', pokemon, 'Re-concentrate', '[silent]');
+			this.add('-message', `${pokemon.name} has completely re-focused! Its special energy has exploded!`);
+		},
+		// Doubles Special Attack
+		onModifySpAPriority: 5,
+		onModifySpA(spa, pokemon) {
+			return this.chainModify(2.0);
+		},
+		// Forces all attacks to completely bypass accuracy checks (cannot miss)
+		onAnyAccuracy(accuracy, target, source, move) {
+			if (source === this.effectState.target) return true;
+		},
+		onEnd(pokemon) {
+			this.add('-end', pokemon, 'Re-concentrate', '[silent]');
+		},
+	},
+		
