@@ -333,7 +333,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		name: "Golurk-Mega-Z",
 		baseSpecies: "Golurk",
 		form: "Mega-Z",
-		types: ["Ground", "Ghost"],
+		types: ["Ghost", "Ground"],
 		baseStats: {hp: 89, atk: 154, def: 110, spa: 70, spd: 50, spe: 110}, // Total: 583 (+100 estadísticas base)
 		abilities: {0: "No Guard"}, // ¡Fijado con Indefenso!
 		weightkg: 480.0, // Aumenta su peso al convertirse en un pesado carruaje de arcilla
