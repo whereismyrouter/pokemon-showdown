@@ -247,3 +247,23 @@
 			}
 		},
 	},
+
+	magicbarrage: {
+		num: -2009,
+		accuracy: 100,
+		basePower: 130,
+		category: "Physical",
+		name: "Magic Barrage",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, punch: 1, pulse: 1}, // No contact flag, but has punch and pulse!
+		secondary: {
+			chance: 100, // 100% chance to drop defenses
+			boosts: {
+				def: -1,
+				spd: -1,
+			},
+		},
+		target: "normal",
+		type: "Fairy",
+	},
