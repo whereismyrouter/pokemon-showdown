@@ -504,3 +504,96 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10027,
 	},
+
+	crimsonclouds: {
+		name: "Crimson Clouds",
+		shortDesc: "On switch-in, summons a Rage Storm for 5 turns (8 turns if holding Mystical Humidifier).",
+		onStart(pokemon) {
+			this.field.setWeather('ragestorm');
+			// Overrides duration from 5 turns to 8 turns if holding the humidifier
+			if (pokemon.hasItem('mysticalhumidifier')) {
+				this.field.weatherState.duration = 8;
+			}
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'ragestorm') {
+				this.field.clearWeather();
+			}
+		},
+	},
+	darksun: {
+		name: "Dark Sun",
+		shortDesc: "On switch-in, summons a Solar Eclipse for 5 turns (8 turns if holding Dark Rock).",
+		onStart(pokemon) {
+			this.field.setWeather('solareclipse');
+			if (pokemon.hasItem('darkrock')) {
+				this.field.weatherState.duration = 8;
+			}
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'solareclipse') {
+				this.field.clearWeather();
+			}
+		},
+	},
+	totalocclusion: {
+		name: "Total Occlusion",
+		shortDesc: "On switch-in, summons a Lunar Eclipse for 5 turns (8 turns if holding Gloom Rock).",
+		onStart(pokemon) {
+			this.field.setWeather('lunareclipse');
+			if (pokemon.hasItem('gloomrock')) {
+				this.field.weatherState.duration = 8;
+			}
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'lunareclipse') {
+				this.field.clearWeather();
+			}
+		},
+	},
+	doomsday: {
+		name: "Doomsday",
+		shortDesc: "On switch-in, summons a Red Sun for 5 turns (8 turns if holding Radiant Telescope).",
+		onStart(pokemon) {
+			this.field.setWeather('redsun');
+			if (pokemon.hasItem('radianttelescope')) {
+				this.field.weatherState.duration = 8;
+			}
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'redsun') {
+				this.field.clearWeather();
+			}
+		},
+	},
+	tornadowarning: {
+		name: "Tornado Warning",
+		shortDesc: "On switch-in, summons Gusty Winds for 5 turns (8 turns if holding Aerodynamic Rock).",
+		onStart(pokemon) {
+			this.field.setWeather('gustywinds');
+			if (pokemon.hasItem('aerodynamicrock')) {
+				this.field.weatherState.duration = 8;
+			}
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'gustywinds') {
+				this.field.clearWeather();
+			}
+		},
+	},
+	lividbuzz: {
+		name: "Livid Buzz",
+		shortDesc: "On switch-in, summons a Plague for 5 turns (8 turns if holding Sweet Rock). Fails if Female Combee.",
+		onStart(pokemon) {
+			if (pokemon.baseSpecies.baseSpecies === 'Combee' && pokemon.gender === 'F') return;
+			this.field.setWeather('plague');
+			if (pokemon.hasItem('sweetrock')) {
+				this.field.weatherState.duration = 8;
+			}
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'plague') {
+				this.field.clearWeather();
+			}
+		},
+	},
