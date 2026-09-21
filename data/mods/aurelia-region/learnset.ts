@@ -643,3 +643,38 @@
 		},
 	},
 				
+	everghast: {
+		learnset: {
+			// --- Ghost & Normal STAB Options ---
+			shadowball: ["9M"],
+			poltergeist: ["9M"],
+			hex: ["9M"],
+			whispingmemory: ["9L1"],
+			nightshade: ["9L1"],
+			hypervoice: ["9M"],
+			facade: ["9M"],
+			bodyslam: ["9M"],
+
+			// --- Time & Clock Utility Manipulation ---
+			trickroom: ["9M"], // Incredible option given its low 60 Speed!
+			perishsong: ["9L1"],
+			futuresight: ["9M"],
+			doomdesire: ["9M"], // Fits the apocalyptic clock countdown theme beautifully
+
+			// --- Defensive Stall Recovery (Abuses Count-up scaling) ---
+			recover: ["9M"],
+			willowisp: ["9M"],
+			toxic: ["9M"],
+			protect: ["9M"],   // Keeps our global rule intact
+			substitute: ["9M"],
+			calmmind: ["9M"],
+			curse: ["9M"],
+
+			// --- Coverage Alternatives ---
+			darkpulse: ["9M"],
+			flashcannon: ["9M"],
+			earthpower: ["9M"],
+			psychic: ["9M"],
+		},
+	},
+				
