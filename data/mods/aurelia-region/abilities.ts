@@ -597,3 +597,31 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+
+	lastbreath: {
+		name: "Last Breath",
+		shortDesc: "If KOed before moving, the user survives on 0 HP to execute its move, then faints. Cannot heal.",
+		onDamagePriority: -100, // Executes at the absolute last second before standard faint checks triggers
+		onDamage(damage, target, source, effect) {
+			// Trigger only if the hit would knock them out AND they haven't moved yet this round
+			if (damage >= target.hp && !this.queue.willMove(target)) {
+				this.add('-ability', target, 'Last Breath');
+				this.add('-message', `${target.name} refuses to fall before unleashing its final strike!`);
+				
+				target.hp = 0; // Lock HP to 0 conceptually
+				target.volatiles['lastbreathstate'] = { duration: 1 }; // Track state internally
+				
+				return target.hp - 1; // Subtracts just enough damage to keep them barely functional for the move step
+			}
+		},
+		// --- Hard blocks any incoming HP healing mechanics while Last Breath is active ---
+		onTryHealPriority: 1,
+		onTryHeal(damage, target, source, effect) {
+			if (target.volatiles['lastbreathstate']) {
+				this.add('-message', `The fatal wounds cannot be healed!`);
+				return false; // Blocks Recover, Drain Punch, Leftovers, etc.
+			}
+		},
+		rating: 5,
+		num: -10028,
+	},
