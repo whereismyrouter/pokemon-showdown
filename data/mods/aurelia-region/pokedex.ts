@@ -274,3 +274,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Swift Start"}, // Uniquely has this single signature ability
 		weightkg: 0.1, // A literal weightless spark
 	},
+
+	aerovoy: {
+		num: 10018,
+		name: "Aerovoy",
+		types: ["Flying"],
+		baseStats: {hp: 75, atk: 130, def: 70, spa: 75, spd: 70, spe: 150}, // Total: 570 (Mythical speed tier)
+		abilities: {0: "Regal Flight"}, // Uniquely has this single signature ability
+		weightkg: 15.0, // Sleek, aerodynamic frame
+	},
