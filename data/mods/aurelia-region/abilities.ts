@@ -477,3 +477,30 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+
+	tantrumbreaker: {
+		name: "Tantrum Breaker",
+		shortDesc: "If the user misses a move or hits a Protect shield, its Attack doubles next turn and its moves cannot miss.",
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Tantrum Breaker');
+		},
+		// --- Catches if a move misses or fails due to Protect/Detect ---
+		onMoveFail(target, source, move) {
+			source.addVolatile('tantrumbreakeractive');
+		},
+		rating: 5,
+		num: -10026,
+	},
+	reconcentrate: {
+		name: "Re-concentrate",
+		shortDesc: "If the user misses a move or hits a Protect shield, its Special Attack doubles next turn and its moves cannot miss.",
+		onStart(pokemon) {
+			this.add('-ability', pokemon, 'Re-concentrate');
+		},
+		// --- Catches if a move misses or fails due to Protect/Detect ---
+		onMoveFail(target, source, move) {
+			source.addVolatile('reconcentrateactive');
+		},
+		rating: 5,
+		num: -10027,
+	},
