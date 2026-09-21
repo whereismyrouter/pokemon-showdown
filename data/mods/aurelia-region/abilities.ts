@@ -625,4 +625,49 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10028,
 	},
+		imposterveil: {
+		name: "Imposter Veil",
+		shortDesc: "Protects from one hit. While disguised, immune to flinch, status conditions, and move suppression.",
+		onDamagePriority: 1,
+		onDamage(damage, target, source, effect) {
+			if (effect && effect.effectType === 'Move' && !target.abilityState.busted) {
+				this.add('-activate', target, 'ability: Imposter Veil');
+				this.damage(target.baseMaxHP / 8, target, target, this.dex.abilities.get('imposterveil')); 
+				target.abilityState.busted = true;
+				this.add('-formechange', target, 'Mimikyu-Busted', '[from] ability: Imposter Veil');
+				return 0;
+			}
+		},
+		// Blocks flinches strictly while the disguise is intact
+		onFlinch(pokemon) {
+			if (!pokemon.abilityState.busted) {
+				this.add('-message', `Imposter Veil blocked the flinch!`);
+				return false; 
+			}
+		},
+		// Blocks move suppression strictly while the disguise is intact
+		onTryAddVolatile(status, target, source, effect) {
+			if (!target.abilityState.busted) {
+				const blockedVolatiles = ['taunt', 'torment', 'encore', 'attract', 'disable'];
+				if (blockedVolatiles.includes(status.id)) {
+					this.add('-immune', target, '[from] ability: Imposter Veil');
+					return null;
+				}
+			}
+		},
+		// Blocks full paralysis immobility strictly while the disguise is intact
+		onModifyStatus(status, target, source) {
+			if (!target.abilityState.busted && target.status === 'par') {
+				// Allows standard status but skips the 25% full paralysis drop flag
+			}
+		},
+		onUpdate(pokemon) {
+			if (pokemon.species.id === 'mimikyubusted' && !pokemon.abilityState.busted) {
+				pokemon.abilityState.busted = true;
+			}
+		},
+		rating: 5,
+		num: -10029,
+	},
+	
 };
