@@ -265,3 +265,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Count-up"}, // Uniquely has this single signature ability
 		weightkg: 120.0, // Solid heavy ticking entity
 	},
+
+	etherspark: {
+		num: 10017,
+		name: "Etherspark",
+		types: ["Fairy", "Fire"],
+		baseStats: {hp: 65, atk: 60, def: 55, spa: 135, spd: 75, spe: 160}, // Total: 550 (Ultra-fast Mythical profile)
+		abilities: {0: "Swift Start"}, // Uniquely has this single signature ability
+		weightkg: 0.1, // A literal weightless spark
+	},
