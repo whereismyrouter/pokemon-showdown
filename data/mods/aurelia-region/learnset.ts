@@ -466,3 +466,43 @@
 		},
 	},
 			
+	galemar: {
+		learnset: {
+			// --- Signature Move ---
+			doombeam: ["9L1"],
+
+			// --- Your Specific Move Requests ---
+			aquatail: ["9M"],
+			surf: ["9M"],
+			muddywater: ["9M"],
+			hydropump: ["9M"],
+			hydrocannon: ["9M"],
+			crunch: ["9M"],
+			bite: ["9L1"],
+			foulplay: ["9M"],
+			headsmash: ["9M"],
+			nastyplot: ["9M"],
+			swordsdance: ["9M"],
+			thief: ["9M"], // Internal ID for 'Theft' is 'thief'
+			makeitrain: ["9M"], // Great flavor for a sunken galleon full of gold!
+			dive: ["9M"],
+			infestation: ["9M"],
+			raindance: ["9M"],
+			lastresort: ["9M"],
+			coil: ["9M"],
+			bind: ["9L1"],
+			whirlpool: ["9M"],
+			meanlook: ["9L1"],
+			glare: ["9M"],
+			protect: ["9M"],
+			curse: ["9M"],
+			hyperbeam: ["9M"],
+			soak: ["9M"],
+			thunderbolt: ["9M"],
+			thunderfang: ["9M"],
+			psychicfang: ["9M"],
+			jawlock: ["9M"],
+			fishiousrend: ["9M"], // Absolutely terrifying on a 155 Attack Leviathan!
+		},
+	},
+				
