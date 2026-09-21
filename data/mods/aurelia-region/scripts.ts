@@ -26,7 +26,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 		},
 	},
-};
+
 
 	pokemon: {
 		// (Keep your previous Male Combee gender validator loop active here!)
@@ -39,3 +39,4 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 		},
 	},
+};
