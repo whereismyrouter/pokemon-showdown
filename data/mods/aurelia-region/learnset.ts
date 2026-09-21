@@ -869,5 +869,27 @@ solenogre: {
 			riposte: ["9M"],
 		},
 	},
-				
+
+		zoroarkhisui: {
+		learnset: {
+			inherit: true,
+			aurasphere: ["9M"], // Premium special coverage!
+		},
+	},
+	mimikyu: {
+		learnset: {
+			inherit: true,
+			spiritbreak: ["9M"], // Bulky physical support option
+			magicaltorque: ["9M"], // Absolute 100 BP Fairy STAB nuke!
+		},
+			golurk: {
+		learnset: {
+			inherit: true,
+			shadowimpact: ["9L1"], // Your custom single-target sonic boom nuke
+			combattorque: ["9M"], // Elite Spartan fighting coverage!
+		},
+	},
+		
+	},
+	
 };
