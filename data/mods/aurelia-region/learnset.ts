@@ -360,3 +360,33 @@
 		},
 	},
 			
+	brumaroth: {
+		learnset: {
+			// --- Signature Move ---
+			icebergcrash: ["9L1"],
+
+			// --- Status Move (The Only One!) ---
+			roar: ["9M"],
+
+			// --- Your Specific Attack Requests ---
+			iciclecrash: ["9M"],
+			iceshard: ["9L1"],
+			headlongrush: ["9M"],
+			earthquake: ["9M"],
+			stompingtantrum: ["9M"],
+			bulldoze: ["9M"],
+			ironhead: ["9M"],
+			shadowclaw: ["9M"],
+			dragonclaw: ["9M"],
+			crunch: ["9M"],
+			bite: ["9L1"],
+			stoneedge: ["9M"],
+			rockslide: ["9M"],
+			closecombat: ["9M"],
+			tripleaxel: ["9M"],
+			iciclespear: ["9M"],
+			gigaimpact: ["9M"],
+			glaiverush: ["9M"], // Fits the unstoppable bulldozer theme perfectly!
+		},
+	},
+			
