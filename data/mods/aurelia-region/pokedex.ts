@@ -65,6 +65,16 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 3.5, // Lightweight, matching a garden gnome!
 	},
 
+		abshilu: {
+		num: -1008, // Adjust this number if you are tracking specific IDs for your dex
+		name: "Abshilu",
+		types: ["Fairy", "Poison"],
+		baseStats: {hp: 65, atk: 60, def: 60, spa: 135, spd: 75, spe: 130},
+		abilities: {0: "Neutralizing Gas", 1: "Psychic Surge", H: "No Guard"},
+		weightkg: 40.0,
+		color: "Purple",
+	},
+	
 	jokergeist: {
 		num: 10009,
 		name: "Jokergeist",
