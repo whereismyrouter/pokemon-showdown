@@ -292,3 +292,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Ultradrain", 1: "Rough Skin", H: "Intimidate"},
 		weightkg: 410.0, // Heavy wood and root amalgamation
 	},
+
+	rotom: {
+		inherit: true,
+		baseStats: {hp: 50, atk: 50, def: 77, spa: 134, spd: 77, spe: 132}, // Massive speed and power upgrade!
+	},
