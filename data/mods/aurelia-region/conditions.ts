@@ -156,3 +156,53 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.add('-fieldend', 'move: Flood');
 		},
 	},
+
+	solareclipse: {
+		name: "Solar Eclipse",
+		effectType: "Weather",
+		duration: 5,
+		onStart(battle, source, effect) {
+			this.add('-weather', 'Solar Eclipse');
+			this.add('-message', "An eerie shadow blots out the sun! A Solar Eclipse has begun!");
+		},
+		onResidualPriority: 1,
+		onResidual(battle) {
+			this.add('-weather', 'Solar Eclipse', '[upkeep]');
+			this.eachEvent('Weather');
+		},
+		// --- 1. Dark-types get a 1.5x Special Defense boost ---
+		onModifySpDPriority: 10,
+		onModifySpD(spd, pokemon) {
+			if (pokemon.hasType('Dark')) {
+				return this.chainModify(1.5);
+			}
+		},
+		// --- 2. Dark-type Special Moves gain +1 priority (except Parting Shot) ---
+		onModifyPriority(priority, pokemon, target, move) {
+			if (pokemon.hasType('Dark') && move.type === 'Dark' && move.category === 'Special') {
+				if (move.id !== 'partingshot') {
+					return priority + 1;
+				}
+			}
+		},
+		// --- 3. Fairy-types lose offensive power (33% weaker) ---
+		onBasePowerPriority: 10,
+		onBasePower(basePower, attacker, defender, move) {
+			if (attacker.hasType('Fairy')) {
+				return this.chainModify(0.67);
+			}
+			// --- 5. Bug-type moves hit Dark-types 1.5x harder ---
+			if (move.type === 'Bug' && defender.hasType('Dark')) {
+				return this.chainModify(1.5);
+			}
+		},
+		// --- 4. Dark Pulse becomes a spread move hitting all adjacent foes ---
+		onModifyMove(move, pokemon) {
+			if (move.id === 'darkpulse') {
+				move.target = 'allAdjacentFoes';
+			}
+		},
+		onEnd() {
+			this.add('-weather', 'none');
+		},
+	},
