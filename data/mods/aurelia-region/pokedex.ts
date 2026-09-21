@@ -216,3 +216,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Searise"},
 		weightkg: 950.0, // Heavy leviathan with a sunken ship
 	},
+
+	astralembus: {
+		num: 10014,
+		name: "Astralembus",
+		types: ["Ghost", "Fire"],
+		baseStats: {hp: 130, atk: 80, def: 100, spa: 160, spd: 120, spe: 90}, // Total: 680 (Box Legend profile)
+		abilities: {0: "Dark Sun", 1: "Total Occlusion", H: "Doomsday"},
+		weightkg: 420.0, // A massive but gentle cosmic entity
+	},
