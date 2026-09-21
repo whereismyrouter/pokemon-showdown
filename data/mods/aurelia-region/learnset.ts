@@ -390,3 +390,48 @@
 		},
 	},
 			
+	helistionix: {
+		learnset: {
+			// --- Signature Move ---
+			magicbarrage: ["9L1"],
+
+			// --- Your Specific Move Requests ---
+			detect: ["9L1"],
+			heavyslam: ["9M"],
+			bodypress: ["9M"],
+			ironhead: ["9M"],
+			allyswitch: ["9M"],
+			spiritbreak: ["9M"],
+			smokescreen: ["9L1"],
+			lightscreen: ["9M"],
+			moonblast: ["9M"],
+			flashcannon: ["9M"],
+			autotomize: ["9M"],
+			skillswap: ["9M"],
+			curse: ["9M"],
+			astralbarrage: ["9M"], // A terrifying addition for a machine-god!
+			shadowball: ["9M"],
+			infestation: ["9M"],
+			gigaimpact: ["9M"],
+			hyperbeam: ["9M"],
+
+			// --- Every Single Non-Signature Punch-Based Move ---
+			bulletpunch: ["9M"],
+			cometpunch: ["9L1"],
+			counter: ["9M"],
+			drainingpunch: ["9M"],
+			drainpunch: ["9M"],
+			dynamicpunch: ["9M"],
+			firepunch: ["9M"],
+			focuspunch: ["9M"],
+			icepunch: ["9M"],
+			machpunch: ["9M"],
+			megapunch: ["9M"],
+			poweruppunch: ["9M"],
+			ragefist: ["9M"],
+			shadowpunch: ["9M"],
+			skyuppercut: ["9M"],
+			thunderpunch: ["9M"],
+		},
+	},
+				
