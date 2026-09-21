@@ -781,3 +781,9 @@
 		},
 	},
 			
+	golurk: {
+		learnset: {
+			shadowimpact: ["9L1"],
+		},
+	},
+				
