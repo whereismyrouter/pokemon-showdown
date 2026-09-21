@@ -210,3 +210,18 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10010,
 	},
+
+	crimsonclouds: {
+		name: "Crimson Clouds",
+		shortDesc: "On switch-in, summons Rage Storm for 5 turns. Blocks status moves, pivot switches, and switch items.",
+		onStart(pokemon) {
+			this.field.setWeather('ragestorm');
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'ragestorm') {
+				this.field.clearWeather();
+			}
+		},
+		rating: 5,
+		num: -10011,
+	},
