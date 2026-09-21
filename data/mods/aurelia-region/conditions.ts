@@ -255,3 +255,27 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.add('-weather', 'none');
 		},
 	},
+
+	redsun: {
+		name: "Red Sun",
+		effectType: "Weather",
+		duration: 5,
+		onStart(battle, source, effect) {
+			this.add('-weather', 'Red Sun');
+			this.add('-message', "An apocalyptic Red Sun bleeds over the horizon! Typing boundaries have collapsed!");
+		},
+		onResidualPriority: 1,
+		onResidual(battle) {
+			this.add('-weather', 'Red Sun', '[upkeep]');
+			this.eachEvent('Weather');
+		},
+		// --- Forces all type effectiveness calculations to absolute neutral (1x damage) ---
+		onEffectivenessPriority: 10,
+		onEffectiveness(typeMod, target, type, move) {
+			// 0 means neutral damage. This completely ignores weaknesses, resistances, and immunities globally!
+			return 0;
+		},
+		onEnd() {
+			this.add('-weather', 'none');
+		},
+	},
