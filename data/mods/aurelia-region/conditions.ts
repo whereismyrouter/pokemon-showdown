@@ -64,7 +64,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		duration: 5, // Lasts 5 turns as requested
 		onStart(battle, source, effect) {
 			this.add('-weather', 'Rage Storm');
-			this.add('-message', "Crimson clouds gather! A violent Rage Storm locks everyone on the battlefield!");
+			this.add('-message', "Crimson clouds gather! A violent Rage Storm locks everyone in rage!");
 		},
 		onResidualPriority: 1,
 		onResidual(battle) {
@@ -213,7 +213,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		duration: 5,
 		onStart(battle, source, effect) {
 			this.add('-weather', 'Lunar Eclipse');
-			this.add('-message', "A chilling shroud covers the moon! A Lunar Eclipse has begun!");
+			this.add('-message', "The moon raises... A Lunar Eclipse has begun!");
 		},
 		onResidualPriority: 1,
 		onResidual(battle) {
@@ -262,7 +262,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		duration: 5,
 		onStart(battle, source, effect) {
 			this.add('-weather', 'Red Sun');
-			this.add('-message', "An apocalyptic Red Sun bleeds over the horizon! Typing boundaries have collapsed!");
+			this.add('-message', "An apocalyptic Red Sun shines over the horizon! Typing boundaries have collapsed!");
 		},
 		onResidualPriority: 1,
 		onResidual(battle) {
@@ -348,5 +348,63 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			for (const pokemon of this.getAllActive()) {
 				pokemon.removeVolatile('windriderboost');
 			}
+		},
+	},
+
+	plague: {
+		name: "Plague",
+		effectType: "Weather",
+		duration: 5,
+		onStart(battle, source, effect) {
+			this.add('-weather', 'Plague');
+			this.add('-message', "A deafening buzz fills the air! A bug swarm drowns the sky!");
+		},
+		onResidualPriority: 1,
+		onResidual(battle) {
+			this.add('-weather', 'Plague', '[upkeep]');
+			this.eachEvent('Weather');
+		},
+		// --- 1. Potenciación del 50% en ambas ofensivas para los Tipo Bicho ---
+		onModifyAtkPriority: 10,
+		onModifyAtk(atk, pokemon) {
+			if (pokemon.hasType('Bug')) return this.chainModify(1.5);
+		},
+		onModifySpAPriority: 10,
+		onModifySpA(spa, pokemon) {
+			if (pokemon.hasType('Bug')) return this.chainModify(1.5);
+		},
+		// --- 2. Los movimientos Bicho de baja potencia (<60 BP) golpean dos veces ---
+		onModifyMove(move, pokemon) {
+			if (pokemon.hasType('Bug') && move.type === 'Bug' && move.basePower > 0 && move.basePower <= 60) {
+				move.multihit = 2;
+				this.debug('Plague otorga golpe doble a ' + move.name);
+			}
+		},
+		// --- 3. Forzar la activación incondicional de la habilidad Swarm (Enjambre) ---
+		onBasePowerPriority: 2,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === 'Bug' && attacker.hasAbility('swarm')) {
+				return this.chainModify(1.5); // Multiplicador nativo de Swarm sin restricción de PS
+			}
+		},
+		// --- 4. Efecto Dancer global para todos los Tipo Bicho ---
+		onAnyDamageStep(battle, source, target, move) {
+			// El motor de Showdown procesa los movimientos de danza mediante eventos de acción.
+			// Añadimos un interceptor para que si el movimiento tiene la propiedad 'dance', los bichos bailen.
+		},
+		onAnyAction(pokemon) {
+			const action = this.queue.willMove(pokemon);
+			const move = action && this.dex.moves.get(action.move.id);
+			if (move && move.flags['dance']) {
+				for (const bug of this.getAllActive()) {
+					if (bug.hasType('Bug') && bug !== pokemon && !bug.fainted) {
+						this.add('-activate', bug, 'ability: Dancer', '[from] weather: Plague');
+						this.actions.useMove(move.id, bug);
+					}
+				}
+			}
+		},
+		onEnd() {
+			this.add('-weather', 'none');
 		},
 	},
