@@ -288,3 +288,18 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10015,
 	},
+
+	doomsday: {
+		name: "Doomsday",
+		shortDesc: "On switch-in, summons a Red Sun for 5 turns.",
+		onStart(pokemon) {
+			this.field.setWeather('redsun');
+		},
+		onEnd(pokemon) {
+			if (this.field.weather === 'redsun') {
+				this.field.clearWeather();
+			}
+		},
+		rating: 5,
+		num: -10016,
+	},
