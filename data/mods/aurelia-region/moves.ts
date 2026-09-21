@@ -475,3 +475,18 @@
 		target: "normal",
 		type: "Fire",
 	},
+
+	flightwave: {
+		num: -2016,
+		accuracy: 95,
+		basePower: 100,
+		category: "Special",
+		name: "Flight Wave",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1}, // No contact flag since it is a projectile wave
+		overrideOffensiveStat: 'atk', // Forces the move to calculate damage using physical Attack
+		secondary: null,
+		target: "allAdjacentFoes", // Targets both opponents in double battles without hitting your ally
+		type: "Flying",
+	},
