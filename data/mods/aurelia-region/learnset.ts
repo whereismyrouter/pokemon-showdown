@@ -708,3 +708,30 @@
 		},
 	},
 			
+	aerovoy: {
+		learnset: {
+			// --- Heavy Physical STAB Attacks ---
+			bravebird: ["9M"],
+			dualwingbeat: ["9M"],
+			acrobatics: ["9M"],
+			aerialace: ["9L1"],
+			peck: ["9L1"],
+
+			// --- Physical Slicing & Coverage Options ---
+			leafblade: ["9M"],
+			nightslash: ["9M"],
+			u_turn: ["9M"], // Internal ID for U-turn is 'uturn'
+			uturn: ["9M"],
+			flightwave: ["9L1"],
+			closecombat: ["9M"],
+			ironhead: ["9M"],
+
+			// --- Status & Speed Control ---
+			swordsdance: ["9M"],
+			tailwind: ["9M"],
+			roost: ["9M"],
+			protect: ["9M"],   // Keeps our global rule intact
+			defog: ["9M"],
+		},
+	},
+			
