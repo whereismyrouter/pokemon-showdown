@@ -339,3 +339,27 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 480.0, // Aumenta su peso al convertirse en un pesado carruaje de arcilla
 		requiredItem: "Golurkite Z", // Nombre de su megapiedra
 	},
+
+	nidokingmega: {
+		num: 34,
+		name: "Nidoking-Mega",
+		baseSpecies: "Nidoking",
+		form: "Mega",
+		types: ["Poison", "Ground"],
+		baseStats: {hp: 81, atk: 152, def: 97, spa: 75, spd: 85, spe: 115}, // Total: 605 (+100 Stats!)
+		abilities: {0: "Tantrum Breaker"},
+		weightkg: 85.0,
+		requiredItem: "Nidokingite",
+	},
+	nidoqueenmega: {
+		num: 31,
+		name: "Nidoqueen-Mega",
+		baseSpecies: "Nidoqueen",
+		form: "Mega",
+		types: ["Poison", "Ground"],
+		baseStats: {hp: 90, atk: 75, def: 117, spa: 135, spd: 115, spe: 73}, // Total: 605 (+100 Stats!)
+		abilities: {0: "Re-concentrate"},
+		weightkg: 82.0,
+		requiredItem: "Nidoqueenite",
+	},
+		
