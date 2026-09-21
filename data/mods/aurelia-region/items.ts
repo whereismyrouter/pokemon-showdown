@@ -75,5 +75,17 @@ export const Items: {[k: string]: ModdedItemData} = {
 		spritenum: 232,
 		shortDesc: "If the holder summons a Rage Storm, its duration becomes 8 turns instead of 5.",
 	},
+		mimikyubite: {
+		name: "Mimikyubite",
+		spritenum: 575,
+		megaStone: "Mimikyu-Mega",
+		megaEvolves: "Mimikyu",
+		onTakeItem(item, pokemon, source) {
+			if ((source && source.baseSpecies.name === 'Mimikyu') || pokemon.baseSpecies.name === 'Mimikyu') return false;
+			return true;
+		},
+		shortDesc: "Mega Evolves Mimikyu into Mega Mimikyu during battle.",
+	},
+	
 };
 };
