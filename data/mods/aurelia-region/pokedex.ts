@@ -234,3 +234,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Photosynthesis"},
 		weightkg: 320.0, // Heavy spectral bell
 	},
+
+	gholdengoaurelian: {
+		num: 1000, // Uses Gholdengo's official number
+		name: "Gholdengo-Aurelian",
+		baseSpecies: "Gholdengo",
+		form: "Aurelian",
+		types: ["Ice", "Poison"],
+		baseStats: {hp: 87, atk: 133, def: 95, spa: 60, spd: 91, spe: 84}, // Total: 550
+		abilities: {0: "Rotten Touch"}, // Uniquely has this single ability
+		weightkg: 30.0, // Decay makes it lighter than solid gold!
+	},
