@@ -383,3 +383,13 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		// Reemplaza Regenerator en el slot de Habilidad Oculta por Oblivious
 		abilities: {0: "Healer", 1: "Hydration", H: "Oblivious"}, 
 	},
+
+	conkeldurr: {
+		inherit: true,
+		abilities: {0: "Guts", 1: "Sheer Force", H: "Last Breath"}, // Last Breath replaces Iron Fist!
+	},
+	sirfetchd: {
+		inherit: true,
+		abilities: {0: "Steadfast", 1: "Last Breath", H: "Scrappy"}, // Last Breath added to Slot 1!
+	},
+		
