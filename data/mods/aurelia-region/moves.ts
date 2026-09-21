@@ -1,4 +1,8 @@
-	boilingslapdown: {
+export const Moves: {[k: string]: ModdedMoveData} = {
+	// Paste all your custom moves (like Glitch Copy, Coin Flip, Magic Barrage, etc.) right here!
+};
+
+boilingslapdown: {
 		num: -2003, // Custom ID number
 		accuracy: 100,
 		basePower: 85,
