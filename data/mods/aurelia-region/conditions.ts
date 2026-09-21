@@ -18,7 +18,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.add('-message', `The shadow suppressing the opposing items faded away.`);
 		},
 	},
-};
+
 
 	primalsnow: {
 		name: "Primal Snow",
@@ -450,3 +450,4 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		},
 	},
 		
+};
