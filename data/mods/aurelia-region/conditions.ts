@@ -97,3 +97,62 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.add('-weather', 'none');
 		},
 	},
+
+	flood: {
+		name: "Flood",
+		effectType: "Terrain",
+		duration: 0, // Lasts indefinitely as long as Galemar remains active
+		onStart(battle, source, effect) {
+			this.add('-fieldstart', 'move: Flood');
+			this.add('-message', "The sea rises violently! The entire battlefield is completely flooded!");
+			this.effectState.turnCount = 1;
+		},
+		onResidualPriority: 2,
+		onResidual(battle) {
+			this.effectState.turnCount++;
+			if (this.effectState.turnCount >= 3) {
+				this.add('-message', "The Flood has grown too deep! Even airborne targets are being dragged down!");
+			}
+		},
+		// --- Halves Speed based on Turn Count and Grounded Status ---
+		onModifySpe(spe, pokemon) {
+			if (pokemon.hasType('Water')) return; // Water types are completely immune
+
+			const turnCount = this.effectState.turnCount || 1;
+			if (turnCount <= 2) {
+				// Turns 1 and 2: Only affect grounded non-Water types
+				if (pokemon.isGrounded()) {
+					return this.chainModify(0.5);
+				}
+			} else {
+				// Turn 3 onwards: Affects absolutely every non-Water type
+				return this.chainModify(0.5);
+			}
+		},
+		// --- Dynamically Force-Activates Swift Swim and Torrent Modifiers Field-Wide ---
+		onModifyMove(move, pokemon) {
+			// If a Water-type possesses Swift Swim or Torrent, the terrain keeps them fully active
+			if (pokemon.hasType('Water')) {
+				if (pokemon.hasAbility('swiftswim')) {
+					pokemon.abilityState.swiftSwimForced = true; // Flag to ensure speed double calculations clear
+				}
+			}
+		},
+		// --- Extra hook to double Swift Swim speed under Flood ---
+		onModifySpePriority: 1,
+		onModifySpeRule(spe, pokemon) {
+			if (pokemon.hasType('Water') && pokemon.hasAbility('swiftswim')) {
+				return this.chainModify(2);
+			}
+		},
+		// --- Forces Torrent's 1.5x damage modifier to trigger unconditionally ---
+		onBasePowerPriority: 2,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === 'Water' && attacker.hasAbility('torrent')) {
+				return this.chainModify(1.5); // Bypasses the standard 1/3 HP threshold check entirely
+			}
+		},
+		onEnd() {
+			this.add('-fieldend', 'move: Flood');
+		},
+	},
