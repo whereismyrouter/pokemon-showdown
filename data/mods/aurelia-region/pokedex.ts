@@ -82,3 +82,111 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Neverending Winter"},
 		weightkg: 680.0, // Heavy bulldozer weight
 	},
+
+	castform: {
+		inherit: true,
+		onUpdate(pokemon) {
+			if (pokemon.baseSpecies.baseSpecies !== 'Castform' || pokemon.transformed) return;
+			let form = '';
+			const weather = this.field.effectiveWeather();
+			switch (weather) {
+				case 'sunnyday':
+				case 'desolateland':
+					form = 'Sunny';
+					break;
+				case 'raindance':
+				case 'primordialsea':
+					form = 'Rainy';
+					break;
+				case 'hail':
+				case 'snow':
+				case 'primalsnow':
+					form = 'Snowy';
+					break;
+				// --- Your 6 Brand New Custom Weather Forms ---
+				case 'ragestorm':
+					form = 'Hero';
+					break;
+				case 'plague':
+					form = 'Swarmy';
+					break;
+				case 'solareclipse':
+					form = 'Doomy';
+					break;
+				case 'lunareclipse':
+					form = 'Gloomy';
+					break;
+				case 'gustywinds':
+					form = 'Windy';
+					break;
+				case 'redsun':
+					form = 'Super';
+					break;
+			}
+			if (pokemon.species.id !== form.toLowerCase()) {
+				pokemon.formeChange('Castform' + (form ? '-' + form : ''), this.effect, true);
+			}
+		},
+	},
+	// Defining the basic database layouts for your new Castform forms
+	castformhero: {
+		num: 351,
+		name: "Castform-Hero",
+		baseSpecies: "Castform",
+		form: "Hero",
+		types: ["Fighting"],
+		baseStats: {hp: 70, atk: 70, def: 70, spa: 70, spd: 70, spe: 70},
+		abilities: {0: "Forecast"},
+		weightkg: 0.8,
+	},
+	castformswarmy: {
+		num: 351,
+		name: "Castform-Swarmy",
+		baseSpecies: "Castform",
+		form: "Swarmy",
+		types: ["Bug"],
+		baseStats: {hp: 70, atk: 70, def: 70, spa: 70, spd: 70, spe: 70},
+		abilities: {0: "Forecast"},
+		weightkg: 0.8,
+	},
+	castformdoomy: {
+		num: 351,
+		name: "Castform-Doomy",
+		baseSpecies: "Castform",
+		form: "Doomy",
+		types: ["Dark"],
+		baseStats: {hp: 70, atk: 70, def: 70, spa: 70, spd: 70, spe: 70},
+		abilities: {0: "Forecast"},
+		weightkg: 0.8,
+	},
+	castformgloomy: {
+		num: 351,
+		name: "Castform-Gloomy",
+		baseSpecies: "Castform",
+		form: "Gloomy",
+		types: ["Ghost"],
+		baseStats: {hp: 70, atk: 70, def: 70, spa: 70, spd: 70, spe: 70},
+		abilities: {0: "Forecast"},
+		weightkg: 0.8,
+	},
+	castformwindy: {
+		num: 351,
+		name: "Castform-Windy",
+		baseSpecies: "Castform",
+		form: "Windy",
+		types: ["Flying"],
+		baseStats: {hp: 70, atk: 70, def: 70, spa: 70, spd: 70, spe: 70},
+		abilities: {0: "Forecast"},
+		weightkg: 0.8,
+	},
+	castformsuper: {
+		num: 351,
+		name: "Castform-Super",
+		baseSpecies: "Castform",
+		form: "Super",
+		types: ["Normal"],
+		baseStats: {hp: 70, atk: 70, def: 70, spa: 70, spd: 70, spe: 70},
+		abilities: {0: "Forecast"},
+		weightkg: 0.8,
+	},
+			
