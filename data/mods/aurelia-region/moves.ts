@@ -460,3 +460,18 @@
 		target: "normal",
 		type: "Ghost",
 	},
+
+	sparkingswap: {
+		num: -2015,
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		name: "Sparking Swap",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1}, // ¡Categoría Especial pero hace contacto físico!
+		selfSwitch: true, // Fuerza al usuario a retirarse tras golpear con éxito
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+	},
