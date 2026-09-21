@@ -135,7 +135,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseSpecies: "Castform",
 		form: "Hero",
 		types: ["Fighting"],
-		baseStats: {hp: 70, atk: 70, def: 70, spa: 70, spd: 70, spe: 70},
+		baseStats: {hp: 70, atk: 130, def: 70, spa: 130, spd: 70, spe: 130},
 		abilities: {0: "Forecast"},
 		weightkg: 0.8,
 	},
