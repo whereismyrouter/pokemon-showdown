@@ -787,3 +787,24 @@
 		},
 	},
 				
+	ceruledge: {
+		learnset: {
+			inherit: true,
+			meteorassault: ["9M"],
+			sacredsword: ["9M"],
+			glaiverush: ["9M"],
+			leafblade: ["9M"],
+			riposte: ["9M"], // Your custom +5 priority parry move!
+		},
+	},
+					armarouge: {
+		learnset: {
+			inherit: true,
+			healpulse: ["9M"],
+			steelbeam: ["9M"],
+			terrainpulse: ["9M"],
+			eruption: ["9M"],
+			steameruption: ["9M"],
+		},
+	},
+				
