@@ -577,3 +577,37 @@
 		},
 	},
 			
+	gholdengoaurelian: {
+		learnset: {
+			// --- Physical STAB Contact Attacks (Abuses Rotten Touch!) ---
+			iciclecrash: ["9M"],
+			iceshard: ["9L1"],
+			icepunch: ["9M"],
+			tripleaxel: ["9M"],
+			gunkshot: ["9M"],
+			poisonjab: ["9M"],
+			direclaw: ["9M"], // Excellent thematic match for a rot touch!
+
+			// --- Coverage & Technical Options ---
+			shadowclaw: ["9M"],
+			knockoff: ["9M"],
+			nightslash: ["9M"],
+			ironhead: ["9M"],
+			closecombat: ["9M"],
+			uturn: ["9M"],
+
+			// --- Status & Control ---
+			swordsdance: ["9M"],
+			coil: ["9M"],
+			honeclaws: ["9M"],
+			swordsdance: ["9M"],
+				
+			toxic: ["9M"],
+			haze: ["9M"],
+			willowisp: ["9M"],
+			protect: ["9M"],  // Keeps our global rule intact
+			spikes: ["9M"],
+			toxicspikes: ["9M"],
+		},
+	},
+							
