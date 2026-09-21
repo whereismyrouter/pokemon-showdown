@@ -12,7 +12,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		},
 		shortDesc: "Mega Evolves Golurk into Mega Golurk-Z during battle.",
 	},
-};
+
 
 	nidokingite: {
 		name: "Nidokingite",
@@ -75,4 +75,5 @@ export const Items: {[k: string]: ModdedItemData} = {
 		spritenum: 232,
 		shortDesc: "If the holder summons a Rage Storm, its duration becomes 8 turns instead of 5.",
 	},
+};
 };
