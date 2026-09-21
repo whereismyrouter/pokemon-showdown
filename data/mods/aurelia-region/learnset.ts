@@ -775,3 +775,9 @@
 		},
 	},
 				
+	rotom: {
+		learnset: {
+			partingshot: ["9M"],
+		},
+	},
+			
