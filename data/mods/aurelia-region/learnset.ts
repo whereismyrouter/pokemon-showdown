@@ -545,3 +545,35 @@
 		},
 	},
 								 
+	perishtoll: {
+		learnset: {
+			// --- Movimiento Insignia ---
+			shadowchains: ["9L1"],
+
+			// --- Ataques Físicos y Especiales ---
+			gyroball: ["9M"],
+			heavyslam: ["9M"],
+			ironhead: ["9M"],
+			flashcannon: ["9M"],
+			shadowball: ["9M"],
+			phantomforce: ["9M"],
+			nightshade: ["9L1"],
+			boomburst: ["9M"],
+			perishsong: ["9L1"], // Ultimate thematic flavor match!
+			payback: ["9M"],
+			earthpower: ["9M"],
+			bodypress: ["9M"],
+			hypervoice: ["9M"], // Movimiento de sonido por sus campanadas
+
+			// --- Control de Estado y Utilidad ---
+			trickroom: ["9M"], // Fantástico para su velocidad base de 45
+			curse: ["9M"],
+			irondefense: ["9M"],
+			nastyplot: ["9M"],
+			protect: ["9M"],   // Regla global aplicada
+			stealthrock: ["9M"],
+			spikes: ["9M"],
+			willowisp: ["9M"],
+		},
+	},
+			
