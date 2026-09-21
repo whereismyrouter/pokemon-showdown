@@ -1,4 +1,7 @@
-	solenogre: {
+export const Learnsets: {[k: string]: ModdedLearnsetData} = {
+	// Paste all your custom Pokémon learnsets (like Gnomska, Abshilu, Brumaroth, etc.) right here!
+
+solenogre: {
 		learnset: {
 			// --- Your Specific Move Requests ---
 			playrough: ["9M"],
@@ -867,3 +870,4 @@
 		},
 	},
 				
+};
