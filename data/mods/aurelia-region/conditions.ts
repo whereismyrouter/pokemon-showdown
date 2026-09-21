@@ -206,3 +206,52 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.add('-weather', 'none');
 		},
 	},
+
+	lunareclipse: {
+		name: "Lunar Eclipse",
+		effectType: "Weather",
+		duration: 5,
+		onStart(battle, source, effect) {
+			this.add('-weather', 'Lunar Eclipse');
+			this.add('-message', "A chilling shroud covers the moon! A Lunar Eclipse has begun!");
+		},
+		onResidualPriority: 1,
+		onResidual(battle) {
+			this.add('-weather', 'Lunar Eclipse', '[upkeep]');
+			this.eachEvent('Weather');
+		},
+		// --- 1. Boosts Ghost-type move power by 50% ---
+		onBasePowerPriority: 10,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === 'Ghost') {
+				return this.chainModify(1.5);
+			}
+		},
+		// --- 2 & 4. Type effectiveness overrides (Ghost hits Normal, Dark loses resistance) ---
+		onEffectivenessPriority: 10,
+		onEffectiveness(typeMod, target, type, move) {
+			if (move && move.type === 'Ghost') {
+				// Forces Ghost moves to hit Normal targets neutrally (normally immune, so typeMod is -25)
+				if (type === 'Normal') return 0;
+				// Forces Ghost moves to hit Dark targets neutrally (normally resisted, so typeMod is -1)
+				if (type === 'Dark') return 0;
+			}
+			return typeMod;
+		},
+		// --- 3. Modifies Poltergeist mechanics inside the weather loop ---
+		onModifyMove(move, pokemon) {
+			if (move.id === 'poltergeist') {
+				// Overrides the native item check to look at the user instead of the target
+				move.onTryHit = function (target, source, move) {
+					if (!source.item) {
+						this.add('-fail', source, 'move: Poltergeist');
+						return null;
+					}
+					this.add('-activate', source, 'move: Poltergeist', this.dex.items.get(source.item).name);
+				};
+			}
+		},
+		onEnd() {
+			this.add('-weather', 'none');
+		},
+	},
