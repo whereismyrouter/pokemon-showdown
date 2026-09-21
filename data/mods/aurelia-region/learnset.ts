@@ -735,3 +735,43 @@
 		},
 	},
 			
+	drawndrein: {
+		learnset: {
+			// --- Crucial Draining Moves (Busted with Ultradrain!) ---
+			hornleech: ["9M"],    // Elite physical STAB recovery matching its roots
+			leechlife: ["9M"],    // Heavy physical insectoid drain
+			drainingkiss: ["9M"], // Fairy-type life drain flavor tool
+			gigadrain: ["9M"],
+
+			// --- Trapping & Dragging Mechanics (Lore-Accurate) ---
+			shadowchains: ["9M"], // Your custom Perish Toll move fits this perfectly!
+			spiritshackle: ["9M"], // Trags them into a corner
+			jawlock: ["9M"],
+			bind: ["9L1"],
+
+			// --- Brutal Dark & Fairy Physical STAB Attacks ---
+			playrough: ["9M"],
+			spiritbreak: ["9M"],
+			knockoff: ["9M"],
+			crunch: ["9M"],
+			suckerpunch: ["9M"],
+
+			// --- Heavy Physical Coverage ---
+			woodhammer: ["9M"],
+			powerwhip: ["9M"],
+			draincage: ["9L1"],
+			animicdrain: ["9L1"],
+			earthquake: ["9M"],
+			headlongrush: ["9M"],
+			ironhead: ["9M"],
+			gigaimpact: ["9M"],
+
+			// --- Utility, Setup & Control ---
+			swordsdance: ["9M"],
+			bulkup: ["9M"],
+			leechseed: ["9L1"],
+			protect: ["9M"],      // Keeps our global rule intact
+			curse: ["9M"],
+		},
+	},
+				
