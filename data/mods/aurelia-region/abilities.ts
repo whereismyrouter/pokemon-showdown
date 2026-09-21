@@ -225,3 +225,21 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10011,
 	},
+
+	trainedfocus: {
+		name: "Trained Focus",
+		shortDesc: "The user's attacks are always critical hits. The user cannot receive critical hits.",
+		onModifyMove(move) {
+			// Sets the critical hit ratio to a tier that guarantees a critical hit on every move
+			move.critRatio = 5;
+		},
+		onDamage(damage, target, source, effect) {
+			// Intercepts and suppresses any incoming critical hit modifications
+			if (effect && effect.id === 'crit') {
+				this.debug('Trained Focus blocks critical hit damage multiplier');
+				return damage; // Returns raw, un-multiplied damage instead
+			}
+		},
+		rating: 4.5,
+		num: -10012,
+	},
