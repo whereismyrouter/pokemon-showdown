@@ -678,3 +678,33 @@
 		},
 	},
 				
+	etherspark: {
+		learnset: {
+			// --- High Impact STAB Attacks ---
+			dazzlinggleam: ["9M"],
+			moonblast: ["9M"],
+			overheat: ["9M"], // Massive synergy with Swift Start turn 1!
+			flamethrower: ["9M"],
+			fireblast: ["9M"],
+			erruption: ["9M"], // Internal ID for Eruption is 'eruption'
+			eruption: ["9M"],   // Full HP Eruption at 320 Speed is terrifying
+			fierydance: ["9M"],
+
+			// --- Coverage & Setup Options ---
+			thunderbolt: ["9M"],
+			discharge: ["9M"],
+			energyball: ["9M"],
+			psychic: ["9M"],
+			nastyplot: ["9M"],
+			calmmind: ["9M"],
+
+			// --- Pivot & Support ---
+			uturn: ["9M"],
+			sparkingswap: ["9L1"],
+			voltswitch: ["9M"], // Perfect pivot options
+			protect: ["9M"],   // Keeps our global rule intact
+			willowisp: ["9M"],
+			agility: ["9M"],
+		},
+	},
+			
