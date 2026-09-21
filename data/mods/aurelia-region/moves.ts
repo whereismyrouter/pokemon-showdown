@@ -372,3 +372,26 @@
 		target: "normal",
 		type: "Ghost",
 	},
+
+	tacticalblast: {
+		num: -2013,
+		accuracy: 100,
+		basePower: 75,
+		category: "Special",
+		name: "Tactical Blast",
+		pp: 5,
+		priority: 1, // Special priority mechanism
+		flags: {protect: 1, mirror: 1},
+		onTry(source, target) {
+			const action = this.queue.willMove(target);
+			const move = action && this.dex.moves.get(action.move.id);
+			// Fails instantly if the opponent is status-checking, setting up, or switching
+			if (!move || move.category === 'Status') {
+				this.add('-fail', source);
+				return null;
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fighting",
+	},
