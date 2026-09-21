@@ -808,3 +808,18 @@
 		},
 	},
 				
+	alomomola: {
+		learnset: {
+			inherit: true,
+			wish: null, // Elimina Wish por completo de su pool de movimientos
+			dive: ["9M"], // Añade Dive como movimiento legal
+		},
+	},
+	gliscor: {
+		learnset: {
+			inherit: true,
+			toxic: null, // Elimina Toxic de su arsenal para que no envenene pasivamente
+			sandstorm: ["9M"], // Añade Sandstorm para potenciar su rol con la arena
+		},
+	},
+				
