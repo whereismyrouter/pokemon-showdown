@@ -319,4 +319,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Honey Gather", H: "Livid Buzz"},
 	},
+	ceruledge: {
+		inherit: true,
+		abilities: {0: "Flash Fire", 1: "Sharpness", H: "Weak Armor"}, // Added Sharpness!
+	},
+	armarouge: {
+		inherit: true,
+		abilities: {0: "Flash Fire", 1: "Mega Launcher", H: "Weak Armor"}, // Added Mega Launcher!
+	},
 
