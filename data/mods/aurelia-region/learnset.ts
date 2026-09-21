@@ -506,3 +506,42 @@
 		},
 	},
 				
+	astralembus: {
+		learnset: {
+			// --- Movepool Synergy Options ---
+			darkpulse: ["9M"],      // Becomes a spread move under Dark Sun!
+			poltergeist: ["9M"],    // Checks its own item under Total Occlusion!
+			weatherball: ["9M"],    // Changes types and hits with 100 BP under ALL 3 weathers!
+
+			// --- Special Ghost & Fire STAB Attacks ---
+			shadowball: ["9M"],
+			hex: ["9M"],
+			astralbarrage: ["9M"],
+			flamethrower: ["9M"],
+			fireblast: ["9M"],
+			overheat: ["9M"],
+			heatwave: ["9M"],
+			mysticalfire: ["9M"],
+
+			// --- Gentle Lunar & Cosmic Support ---
+			moonlight: ["9L1"],     // Fitting healing option for a moon controller
+			wish: ["9M"],
+			safeguard: ["9M"],
+			healpulse: ["9M"],
+			calmmind: ["9M"],
+			nastyplot: ["9M"],
+			willowisp: ["9M"],
+			teleport: ["9L1"],
+			protect: ["9M"],        // Keeps our global rule intact
+			trickroom: ["9M"],
+
+			// --- Heavy Physical Options & Coverage ---
+			flareblitz: ["9M"],
+			phantomforce: ["9M"],
+			earthpower: ["9M"],
+			psychic: ["9M"],
+			hyperbeam: ["9M"],
+			gigaimpact: ["9M"],
+		},
+	},
+								 
