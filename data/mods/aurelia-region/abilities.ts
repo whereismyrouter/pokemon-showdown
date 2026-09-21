@@ -321,3 +321,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 4,
 		num: -10018,
 	},
+
+	brothersinarms: {
+		name: "Brothers in Arms",
+		shortDesc: "The user's Special Attack is boosted by 10% for every non-fainted ally on the team.",
+		onModifySpAPriority: 5,
+		onModifySpA(spa, pokemon) {
+			// Count all living teammates (excluding Kingambit itself)
+			const livingAllies = pokemon.side.pokemon.filter(ally => ally !== pokemon && !ally.fainted).length;
+			if (livingAllies > 0) {
+				// Each living ally gives a 1.10x multiplier stack (e.g., 5 alive = 1.5x Special Attack)
+				return this.chainModify(1 + (livingAllies * 0.10));
+			}
+		},
+		rating: 4.5,
+		num: -10019,
+	},
