@@ -245,3 +245,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Rotten Touch"}, // Uniquely has this single ability
 		weightkg: 30.0, // Decay makes it lighter than solid gold!
 	},
+
+	kingambitaurelian: {
+		num: 983, // Uses Kingambit's official number
+		name: "Kingambit-Aurelian",
+		baseSpecies: "Kingambit",
+		form: "Aurelian",
+		types: ["Fighting", "Steel"],
+		baseStats: {hp: 59, atk: 60, def: 85, spa: 135, spd: 120, spe: 100}, // Total: 550
+		abilities: {0: "Competitive", 1: "Brothers in Arms", H: "Unnerve"},
+		weightkg: 110.0, // Sleeker, more tactical frame
+	},
