@@ -256,3 +256,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Competitive", 1: "Brothers in Arms", H: "Unnerve"},
 		weightkg: 110.0, // Sleeker, more tactical frame
 	},
+
+	everghast: {
+		num: 10016,
+		name: "Everghast",
+		types: ["Ghost", "Normal"],
+		baseStats: {hp: 110, atk: 115, def: 95, spa: 115, spd: 95, spe: 60}, // Total: 600 (Mythical profile)
+		abilities: {0: "Count-up"}, // Uniquely has this single signature ability
+		weightkg: 120.0, // Solid heavy ticking entity
+	},
