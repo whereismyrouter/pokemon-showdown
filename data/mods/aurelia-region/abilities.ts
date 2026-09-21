@@ -23,7 +23,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 	},
 
-};
+
 
 	doublewhip: {
 		name: "Double Whip",
@@ -625,3 +625,4 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: -10028,
 	},
+};
