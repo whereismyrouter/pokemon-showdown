@@ -311,16 +311,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Swarm", 1: "Technician", H: "Livid Buzz"},
 	},
-	combeemale: {
-		num: 415,
-		name: "Combee-Male",
-		baseSpecies: "Combee",
-		form: "Male",
-		types: ["Bug", "Flying"],
-		baseStats: {hp: 30, atk: 30, def: 42, spa: 30, spd: 42, spe: 70},
-		abilities: {0: "Honey Gather", H: "Livid Buzz"}, // ¡Por fin el macho sirve para algo competitivo!
-	},
 	beautifly: {
 		inherit: true,
 		abilities: {0: "Swarm", 1: "Rivalry", H: "Livid Buzz"},
 	},
+	combee: {
+		inherit: true,
+		abilities: {0: "Honey Gather", H: "Livid Buzz"},
+	},
+
