@@ -27,3 +27,15 @@ export const Scripts: ModdedBattleScriptsData = {
 		},
 	},
 };
+
+	pokemon: {
+		// (Keep your previous Male Combee gender validator loop active here!)
+		afterMoveSecondarySelf(target, source, move) {
+			// Checks if the user just finished moving while in the 0 HP Last Breath state
+			if (source.volatiles['lastbreathstate']) {
+				this.add('-message', `${source.name}'s strength has completely run out...`);
+				source.faint(); // Forces the delayed knockout step perfectly
+				source.removeVolatile('lastbreathstate');
+			}
+		},
+	},
